@@ -80,7 +80,10 @@ temperatura2 = int(input("Temperatura habitacion 2 "));
 print((temperatura1 + temperatura2) / 2)
 
 # b-
-
+cantidadGente = 10;
+tiempoNombre = 4.5;
+tiempoTotal = (tiempoNombre *(cantidadGente * (cantidadGente -1)))
+print(tiempoTotal) 
 
 # c-
 persona1 = input("ingresa tu nombre ");
