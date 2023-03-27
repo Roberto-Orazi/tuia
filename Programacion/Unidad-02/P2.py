@@ -100,9 +100,10 @@ else: print("No tienen el mismo largo");
 # 6- comprobar si son v o f 
 # a- FALSO
 print(len("Hola, mundo") == 14)
-import math
+
 
 # b- VERDADERO
+import math
 print(25 == math.sqrt(625) )
 
 # c- VERDADERO
