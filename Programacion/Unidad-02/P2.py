@@ -23,7 +23,6 @@ print(tengo_hambre)
 del tengo_hambre;
 # SI IMPRIMIMOS LA VARIABLE NOS VA A FIGURAR QUE NO ESTA DEFINIDA
 
-
 # 2- ENCONTRAR IGUALDADES
 # a- 3
 print(6/2 == 3)

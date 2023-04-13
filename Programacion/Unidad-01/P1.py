@@ -22,6 +22,6 @@ print("a" * 0)
 # b- = 5.0
 print(10/2 // 1**5)
 # c- = hola mundo!
-print("hola" + " " + "mundo" + "!")
+print("hola" + " "+ "mundo" + "!")
 # d- = hola // ya que lo otro es igual a 0
 print("hola" + (" " + "mundo")*0)
