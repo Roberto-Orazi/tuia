@@ -145,3 +145,12 @@ if x:
     x = int(input('Es mayor de 18?')) # 1 SI - 0 NO
 else:
     print("No calificas para el plan de vivienda")
+    
+    
+#while
+    #ingresar numero if valido4 break continue
+    
+    
+
+    
+    
