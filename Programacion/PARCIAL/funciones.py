@@ -130,6 +130,7 @@ l = bool('6.7')
 m = str(4)
 n = str(5.6)
 o = str('6.7')
+#ESTRUCTURAS DE DATOS
 #LISTAS
 p = list((1, 2, 3, 4, 5))
 q = list([6, 7, 8, 9, 10])
@@ -436,21 +437,41 @@ while d < 6:
     print(d)
     d += 1
 
-#ESTRUCTURAS DE DATOS
-#LISTAS
-o = [1, 2, 3, 4, 5]
-p = [6, 7, 8, 9, 10]
-q = [11, 12, 13, 14, 15]
-#TUPLAS
-r = (1, 2, 3, 4, 5)
-s = (6, 7, 8, 9, 10)
-t = (11, 12, 13, 14, 15)
-#CONJUNTOS
-u = {1, 2, 3, 4, 5}
-v = {6, 7, 8, 9, 10}
-w = {11, 12, 13, 14, 15}
-#DICCIONARIOS
-x = {'nombre': 'Juan', 'edad': 22, 'dni': 12345678}
-y = {'nombre': 'Jorge', 'edad': 23, 'dni': 87654321}
-z = {'nombre': 'Jose', 'edad': 24, 'dni': 12345678}
+#FUNCIONES
+#FUNCIONES SIN PARAMETROS
+def funcion():
+    print('Hola mundo')
+funcion()
+#FUNCIONES CON PARAMETROS
+def funcion2(a, b):
+    print(a + b)
+funcion2(4, 5)
+#FUNCIONES CON PARAMETROS POR DEFECTO
+def funcion3(a = 4, b = 5):
+    print(a + b)
+funcion3()
+#FUNCIONES CON PARAMETROS POR POSICION
+def funcion4(a, b):
+    print(a + b)
+funcion4(b = 4, a = 5)
+#FUNCIONES CON PARAMETROS POR NOMBRE
+def funcion5(a, b):
+    print(a + b)
+funcion5(4, b = 5)
+#FUNCIONES CON PARAMETROS INDEFINIDOS
+def funcion6(*a):
+    print(a[1])
+funcion6(1, 2, 3, 4, 5)
+#FUNCIONES CON PARAMETROS INDEFINIDOS POR NOMBRE
+def funcion7(**a):
+    print(a['nombre'])
+funcion7(nombre = 'Juan', edad = 22, dni = 12345678)
+#FUNCIONES CON RETURN
+def funcion8(a, b):
+    return a + b
+print(funcion8(4, 5))
+#FUNCIONES LAMBDA
+a = lambda b, c: b + c
+print(a(4, 5))
+
 
