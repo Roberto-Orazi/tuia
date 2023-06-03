@@ -1,5 +1,5 @@
 #!/bin.bash
-edad=20
+edad= $20
 
 if [$edad -eq 18]; then #eq es igual que
     echo "Tienes 18 años"

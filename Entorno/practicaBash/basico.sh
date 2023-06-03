@@ -48,3 +48,7 @@ echo "Resta: $resultado" # Resultado: 8
 #LET
 let resultado="4 * 3"
 echo "Multiplicación: $resultado" # Resultado: 12
+
+#COMANDO BC
+resultado=$(echo "scale=2; 10 / 3" | bc)
+echo "División: $resultado" # Resultado: 3.33
