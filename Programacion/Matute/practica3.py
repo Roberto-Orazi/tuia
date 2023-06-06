@@ -24,7 +24,7 @@ def valorMasAlto(valor1,valor2,valor3):
         print("El",valor2,"es el mayor")
     else:
         print("El",valor3,"es el mayor")
-    return 
+
 
 #4. Dados 3 lados de un tri´angulo, informar si el mismo es equil´atero, is´osceles o escaleno
 
@@ -34,7 +34,7 @@ lado3 = int(input("Ingrese la medida del tercer lado: "))
 
 if lado1 == lado2 and lado1 == lado3:
     print("El triangulo es el equilatero")
-elif lado2 == lado1 and lado2 != lado3:
+elif lado2 == lado1:
     print("El triangulo es isosceles")
 else:
     print("El triangulo es escaleno")
@@ -46,7 +46,7 @@ letraElegida = ingreseUnaLetra.lower()
 if letraElegida == "i":
     print("La nota es: 5")
 elif letraElegida == "a":
-    print("La nota es:6")
+    print("La nota es: 6")
 elif letraElegida == "b":
     print("La nota es: 7")
 elif letraElegida == "m":
