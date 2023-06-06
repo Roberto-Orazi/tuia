@@ -62,7 +62,11 @@ numeros = [0 ,1 ,2 ,3 ,4]
 
 """
 numeros = [0, 1, 2, 3, 4]
-nueva_lista = [numero + 1 for numero in numeros]
+nueva_lista = []
+for numero in range(len(numeros)):
+
+    nueva_lista.append(numeros[numero]+1)
+
 print(nueva_lista)
 
 """
@@ -76,8 +80,25 @@ palabras = [" arbol ", " barco ", " artificial ", " casa ", " dado ", "a"]
 
 palabras = ["arbol", "barco", "artificial", "casa", "dado ", "a"]
 nueva_lista = []
-for letra in palabras:
-    for i in range(len(letra)):
-        if i[0] == "a":
-            nueva_lista.append(letra)
+for letra in range(len(palabras)):
+    if palabras[letra][0] == "a":
+        nueva_lista.append(palabras[letra])
 print(nueva_lista)
+"""
+e. Dada una lista de numeros, calcule, por un lado, la suma de los elemetos que se encuentran en un indice par en la lista y , por otro lado, el producto de los elementos de posiciones con indice impar
+
+"""
+numeros = [0,1,2,3,4,5]
+suma = 0
+producto = 1
+for i in range(len(numeros)):
+    if numeros[i] % 2 == 0:
+        suma = suma + i     
+    else:
+        producto = producto * i
+print("La suma de los indices pares es ",suma )
+print("El producto de indices impares es ",producto)  
+
+"""
+f. dada una lista cualquiera, cree una nueva lista con los mismos elementos pero en el orden iverso
+"""
