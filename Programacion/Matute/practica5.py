@@ -102,3 +102,34 @@ print("El producto de indices impares es ",producto)
 """
 f. dada una lista cualquiera, cree una nueva lista con los mismos elementos pero en el orden iverso
 """
+numeros = [0 ,1 ,2 ,3 ,4 ,5]
+a,b,c,d,e,f = numeros
+nueva_lista= [f,e,d,c,b,a]
+print(nueva_lista)
+
+"""
+2. Escriba un programa que dada una lista de números list devuelva otra lista cuyos elementos sean las
+sumas acumuladas de los elementos de list en cada posición. Es decir, una nueva lista donde el primer
+elemento es el mismo que en la lista original list, el segundo elemento es la suma del primer y segundo
+elementos de list, el tercer elemento es la suma del resultado anterior con el tercer elemento de la
+lista original y así sucesivamente. Por ejemplo, dada la lista [1, 2, 3], la suma acumulada debería
+ser [1, 3, 6].
+
+"""
+
+numeros = []
+numeros2= []
+suma = 0
+
+numero = int(input("Ingrese al menos 3 numeros para agregar al a lista( -1 para finalizar): "))
+while numero != -1:
+    numeros.append(numero)
+    numero = int(input("Ingrese al menos 3 numeros para agregar al a lista( -1 para finalizar): "))
+for num in range(len(numeros)):
+    if numeros[num] == 0:
+        numeros2.append(numeros[num])
+        suma = numeros[num]
+    elif numeros[num] != 0:
+        suma += numeros[num]
+        numeros2.append(suma)
+print("La nueva lista es: ", numeros2)
