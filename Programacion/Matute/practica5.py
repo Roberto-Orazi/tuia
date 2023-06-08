@@ -133,3 +133,14 @@ for num in range(len(numeros)):
         suma += numeros[num]
         numeros2.append(suma)
 print("La nueva lista es: ", numeros2)
+
+"""
+3. Escriba un programa que dada una lista determine si tiene algún elemento repetido e imprimirlos.
+Puede asumir que un numero se repite a lo sumo una vez. Pista: Utilice slicing de listas.
+
+"""
+
+lista = [1,1,3,5,7,9,0,0,9,9,6]
+for i in lista:
+    if lista.count(i) > 1:
+        print(i," Esta repetido ",lista.count(i))
