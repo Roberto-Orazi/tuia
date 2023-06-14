@@ -81,17 +81,39 @@ def mostrarResumenGastos(total_por_categoria: dict, categoria_mayor_monto: str, 
 
 
 def agregarGastosAdicionales(*args, **kwargs):
-  #Esta función permite agregar gastos adicionales al registro existente. Puede aceptar argumentos posicionales (*args)
-  #para las categorías de gasto adicionales, y argumentos de palabra clave (**kwargs) para los montos de cada categoría.
-  gastos_adicionales = [0]
+    """Esta función permite agregar gastos adicionales al registro existente.
+    Puede aceptar argumentos posicionales (*args) para las categorías de gasto adicionales,
+    y argumentos de palabra clave (**kwargs) para los montos de cada categoría."""
+    for categoria in args:
+        monto = float(input(f"Ingrese el monto para la categoría '{categoria}': "))
+        if categoria in gastos:
+            gastos[categoria].append(monto)
+        else:
+            gastos[categoria] = [monto]
 
-
+    for categoria, monto in kwargs.items():
+        if categoria in gastos:
+            gastos[categoria].append(monto)
+        else:
+            gastos[categoria] = [monto]
 
 
 def mostrarGastosIndividuales(*args, **kwargs):
-  """Esta función muestra los gastos individuales de cada categoría en un formato legible para el usuario.
-  Puede aceptar argumentos posicionales (*args) para las categorías de gasto a mostrar, y argumentos de palabra clave
-  (**kwargs) para mostrar categorías adicionales con sus respectivos montos."""
+    """Esta función muestra los gastos individuales de cada categoría en un formato legible para el usuario.
+    Puede aceptar argumentos posicionales (*args) para las categorías de gasto a mostrar,
+    y argumentos de palabra clave (**kwargs) para mostrar categorías adicionales con sus respectivos montos."""
+    for categoria in args:
+        if categoria in gastos:
+            print(f"Gastos individuales de la categoría '{categoria}':")
+            for monto in gastos[categoria]:
+                print(f"- {monto}")
+
+    for categoria, monto in kwargs.items():
+        if categoria in gastos:
+            print(f"Gastos individuales de la categoría '{categoria}':")
+            for monto in gastos[categoria]:
+                print(f"- {monto}")
+
 
 # Programa principal
 gastos = ingresarGastos()
