@@ -98,3 +98,18 @@ chmod +x tuia/edp/bin/palindromo.sh
 
 #Ejercicio8
 #crear un script que reciba dos rutas a archivos de texto y que indique si estos archivos tienen la misma cantidad de lineas. validar que los archivos existen y se pueden leer
+echo 'if [ -e $1 ] && [ -e $2 ]; then
+    if [ -r $1 ] && [ -r $2 ]; then
+        if [ $(wc -l $1 | cut -d " " -f1) -eq $(wc -l $2 | cut -d " " -f1) ]; then
+            echo "Tienen la misma cantidad de lineas"
+        else
+            echo "No tienen la misma cantidad de lineas"
+        fi
+    else
+        echo "No se pueden leer los archivos"
+    fi
+else
+    echo "No existen los archivos"
+fi' > tuia/edp/bin/lineas.sh
+chmod +x tuia/edp/bin/lineas.sh
+
