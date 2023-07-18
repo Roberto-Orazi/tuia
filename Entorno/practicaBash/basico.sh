@@ -52,3 +52,12 @@ echo "Multiplicación: $resultado" # Resultado: 12
 #COMANDO BC
 resultado=$(echo "scale=2; 10 / 3" | bc)
 echo "División: $resultado" # Resultado: 3.33
+
+echo " $PATH * "
+echo ' $PATH * '
+
+if [ $# -ne 2 ]; then;
+    echo "Error: Debe introducir dos argumentos."
+    exit 1
+fi
+
