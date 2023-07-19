@@ -191,7 +191,7 @@ def datos_viajes(datos_relevantes:dict):
 
 def calcular_edicion():
     """
-    Calcula el proemdi ode viajes por cada edicion y crea una lista
+    Calcula el proemdio de viajes por cada edicion y crea una lista
     para las etiquetas ediciones
     """
     
