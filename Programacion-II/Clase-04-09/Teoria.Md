@@ -28,3 +28,54 @@ corner=(0,0)
 bob=Rectangle(100,200,corner)
 grow_rectangle(bob,50,100)
 ```
+
+
+
+## COPIANDO OBJETOS
+
+>>>import copy q = copy.copy(p) p is q False
+
+
+>>> import copy r2 = copy.deepcopy(r) r is r2 False r.corner is r2.corner False
+
+```
+class Time:
+    def __init__(self,hh:int,mm:int,ss:int)->None:
+        self.hours=hh
+        self.minutes=mm
+        self.seconds=ss
+
+    def increment(self,seconds:int)->None:
+        self.seconds=seconds+self.seconds()
+
+        while self.seconds>=60:
+            self.seconds=self.seconds-60
+            self.minutes+=1
+
+    TODO: HACER LA FUNCION DE TAREA PDF PAGINA 41
+    def convert_to_seconds()->:
+```
+
+```
+class Point:
+    def __init__(self, x:float,y:float)->None:
+        self.x=x
+        self.y=y
+
+    def __add__(self,other:'Point')->Bool:
+        Return Point(self.x+other.x,self.y+other.y)
+```
+### El metodo __add__ recibe como parametro otro objeto de tipo punto y devuelve un nuevo objeto que es la suma de ambos.
+
+```
+class Square:
+    def __init__(self,size:float,corner:Point)->None:
+        self.size=size
+        self.width=self.size
+        self.height=self.size
+        self.corner=corner
+
+    def get_area(self)->float:
+        return self.size**2
+
+```
