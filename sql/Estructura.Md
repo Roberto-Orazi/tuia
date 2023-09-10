@@ -113,3 +113,11 @@ REAL, ES FLOAT (es de 8bytes por lo tanto es mas rapido y almacena menos informa
 NUMERIC, NUMEROS MATEMATICOS MUY ESPECIFICOS, POR EJEMPLO PI QUE TIENEN MUCHA PRECISION (es mas lento pero no tiene limite de almacenmaiento)
 
 SON CAMPOS DINAMICOS YA QUE LO QUE LE INSERTEMOS HACE QUE LA COLUMNA SE TRANSFORME EN ESO, SI YO GUARDO UN TEXTO EN UN CAMPO DE INTEGER EL CAMPO PASA A SER TEXT PERO ES MALA PRACTICA
+
+IDENTIFICADORES:
+Son campos que sirven para identificar un registro entero y tenemos 2 tipos
+
+1. PRIMARY KEYS(Claves primarias)
+- No pueden tener valores nulos
+
+2. FOREIGN KEYS(Claves foraneas)
