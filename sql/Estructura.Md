@@ -117,7 +117,17 @@ SON CAMPOS DINAMICOS YA QUE LO QUE LE INSERTEMOS HACE QUE LA COLUMNA SE TRANSFOR
 IDENTIFICADORES:
 Son campos que sirven para identificar un registro entero y tenemos 2 tipos
 
-1. PRIMARY KEYS(Claves primarias)
+1. PRIMARY KEYS(PK)(Claves primarias)
+- Son los id de cada entidad
 - No pueden tener valores nulos
 
-2. FOREIGN KEYS(Claves foraneas)
+2. FOREIGN KEYS(FK)(Claves foraneas)
+- Son los id que usamos para hacer referencia a los id de otra entidad/tabla/lugar
+- Son las Primary Keys de la tabla a la que hacemos referencia
+
+turnos_medicos      usuarios
+id_turno(PK)        id_usuario(PK)
+profesional         nombre
+id_usuario(FK)      apellido
+motivo              edad
+horario
