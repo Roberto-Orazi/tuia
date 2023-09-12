@@ -117,7 +117,7 @@ argumentos.*
 
 
 class Conjunto:
-    def __init__(self, elementos) -> None:
+    def __init__(self, *elementos) -> None:
         self.elementos = elementos
 
     def pertenece(self, elemento):
@@ -165,8 +165,7 @@ class Vector:
 
     def put(self, posicion, valor):
         """
-        Recibe una posición y un `float`, y actualiza dicha posición del vector con el valor suministrado.
-        **Devuelve el
+        Recibe una posición y un `float`, y actualiza dicha posición del vector con el valor suministrado. **Devuelve el
         valor nuevo** si la posición es válida, o `None` si es inválida.
         """
         if posicion < 0 or posicion >= self.dimension:
@@ -176,8 +175,8 @@ class Vector:
 
     def __add__(self, otro_vector):
         """
-        Recibe como parámetro otro vector. Si el tamaño no es compatible, devuelve `None`. Si el tamaño es
-        compatible, devuelve un nuevo vector con el resultado de la suma componente a componente entre ambos.
+        Recibe como parámetro otro vector. Si el tamaño no es compatible, devuelve `None`. Si el tamaño es compatible,
+        devuelve un nuevo vector con el resultado de la suma componente a componente entre ambos.
         """
         if self.dimension != otro_vector.dimension:
             return None
@@ -205,8 +204,8 @@ v2.put(1, 2)
 v2.put(2, 3)
 v2.put(3, 4)
 v2.put(4, 5)
-print(v1)
-print(v2)
+print('vector1:', v1)
+print('vector2', v2)
 print(v1 + v2)
 
 
