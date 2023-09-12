@@ -228,6 +228,22 @@ class Nodo:
         """
         return str(self.valor)
 
+class ListaEnlazada:
+    def __init__(self, nodo=None):
+        """
+        Modela una lista enlazada
+        """
+        self.nodo = nodo
+
+    def __str__(self):
+        """
+        La funcion str de una lista es la concatenacion de los str de sus nodos
+        """
+        if self.nodo == None:
+            return "[]"
+        else:
+            return "[" + str(self.nodo) + "]"
+
     def __len__(self):
         """
         La longitud de un nodo es 1 mas la longitud del siguiente
