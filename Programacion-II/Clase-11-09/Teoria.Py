@@ -191,7 +191,7 @@ class Vector:
     def __repr__(self):
         return str(self)
 
-
+#TODO: CAMBIAR PARA QUE EN VEZ DE QUE TENGA POS 0 EMPIECE EN 1
 v1 = Vector(5)
 v2 = Vector(5)
 v1.put(0, 1)
@@ -207,7 +207,6 @@ v2.put(4, 5)
 print('vector1:', v1)
 print('vector2', v2)
 print(v1 + v2)
-
 
 """
 Ejercicio 6 Implemente el TAD Lista de la teoría, utilizando nodos enlazados. __str__ __len__ append(x) insert(i,x)
