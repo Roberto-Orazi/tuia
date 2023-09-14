@@ -366,12 +366,13 @@ class ListaEnlazada:
 
     def pop(self, posicion):
         """
-        Elimina el valor de la posicion indicada
+        Elimina el valor de la posicion indicada y retorna el anterior
         """
         if posicion == 0:
             self.nodo = self.nodo.siguiente
         else:
-            self.nodo.pop(posicion - 1)
+            return self.nodo.pop(posicion - 1)
+            # TODO: Corregir el pop
 
     def index(self, valor):
         """
