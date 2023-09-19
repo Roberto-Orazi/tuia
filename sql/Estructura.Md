@@ -131,3 +131,6 @@ profesional         nombre
 id_usuario(FK)      apellido
 motivo              edad
 horario
+
+
+## BDD NORTHWIND
