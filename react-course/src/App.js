@@ -1,4 +1,6 @@
+import React from "react";
 import { Expenses } from './components/Expenses/Expenses';
+import { NewExpense } from './components/NewExpense/NewExpense';
 
 const App = () => {
   const expenses = [ //aca tengo un array con objetos adentro
@@ -27,10 +29,16 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addExpenseHandler = expense =>{
+    console.log('on app')
+    console.log(expense)
+  }
   return (
     <div className="App">
       <header className="App-header">
         <h1>Expensas</h1>
+        <NewExpense onAddExpense={addExpenseHandler}/>
         <Expenses items={expenses} />
       </header>
     </div>
