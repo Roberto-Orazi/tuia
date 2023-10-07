@@ -60,4 +60,16 @@ DEPENDE EL PROBLEMA.
    y muchas veces no hace falta calcular nada. Si la lista
    es vacia es obvio que la suma de elementos es 0.
 2. Tenemos que pensar como reducir una lista no vacia para
-   que llegue a tener 0 elementos. 
+   que llegue a tener 0 elementos.
+
+### Errores mas comunes
+1. No escribir un caso base para la recursión
+2. No asegurarse de que el caso recursivo no llegue a un caso base
+
+Cualquier cosa el interprete nos va a tirar error de maximum recursion depth exceeded
+
+## Conclusion
+- La recursión es el proceso por el cual la funcion se invoca a si misma. y permite crear nuevo tipos de ciclos.
+- Para escribir una funcion recursiva siempre hay que considerar el caso base(El que tiene la recursion) y
+  el caso recursivo que es el que realiza la llamada recursiva. Si no tiene caso base es bucle infitnito
+- Una funcion no es mejor ni peor por ser recursiva.
