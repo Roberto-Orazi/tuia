@@ -32,3 +32,40 @@
 - Podemos mezclar distintos estilos, pero debemos intentar de que el resultado sea un programa claro limpio y legible.
 
 ## Programacion orientada a objetos
+
+La idea de un objeto es:
+  1. Representar una entidad de la vida real.
+  2. Agrupar todas las variables y funciones asociadas con la misma entidad real.
+
+
+Ejemplo de algo cotidiano, pensado como un objeto un GATO
+Podemos decir:
+- cual es su tamaño
+- color de pelo
+- mestizaje
+ESTOS SON SUS ATRIBUTOS
+
+Despues los objetos tienen comportamientos:
+- Maullar
+- Arañar
+- Trepar
+ESTOS SON LOS METODOS.
+Que en nuestro caso van a ser comportamientos o funcionalidades.
+
+## OBJETOS
+
+Un objeto es un ente que consta de:
+- Identidad
+- Estado
+- Comportamiento
+
+Una clase es una plantilla para la creacion de nuevos objetos
+
+
+- Las clases nos permiten modularizar objetos y la funcionalidad asociada a un tipo de objeto
+- Al definir una clase tenemos que definir que atributos y que metodos contienen los objetos pertenecientes a esta clase.
+- Cuando un objeto pertenezca a una clase, diremos que ese objeto es una instancia de la clase.
+
+Por ejemplo:
+Los datos integrados de python como int, list, etc estan implementados como clases, y sus instancias son objetos.
+
