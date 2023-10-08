@@ -182,3 +182,8 @@ Son parecidos a las funciones excepto por:
 1. Son definidos dentro de una definicion de clase para hacer la relacion entre ambos explicita.
 2. La sintaxis para invocar al metodo es diferente.
 
+## HERENCIA
+
+La herencia permite añadir nuevos metodos a una clase sin modificar la clase ya existente.
+Se llama herencia porque la nueva clase hereda todos los metodos de la clase existente.
+La clase existente se llama clase padre y la nueva clase hija o subclase.

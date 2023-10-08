@@ -127,7 +127,7 @@ def pop(self, i:int | None=None)->Any:
 ```
 def remove(self,x:Any)->None:
     '''
-    Borrala primera aparici´ondel valorxen lalista.Sixnoest´aenlalista,imprime un mensaje deerroryretorna inmediatamente
+    Borrala primera apariciondel valor x en la lista. Si x no est´a en la lista, imprime un mensaje de error y retorna inmediatamente
     '''
     if self.len==0:
         print('La lista esta vacia')
