@@ -76,3 +76,14 @@ Por ejemplo:
 ListaEnlazada presenta 2 invariantes:
 1. atributo len(Debe contenter siempre la misma cantidad de nodos de la lista)
 2. atributo prim(referencia al primer nodo)
+
+## Arreglo Vs Lista Enlazada
+### Arreglo
+- Barato para buscar elementos por posicion
+- Barato agregar o elminar al final
+- Caro agregar o eliminar al principio o medio
+
+### Lista Enlazada
+- Caro para buscar elementos por posicion
+- Barato agregar al principio
+- Barato agregar o eliminar al principio o en medio ya que no hay que mover nada en memoria solo actualizar referencias.
