@@ -70,6 +70,6 @@ Cualquier cosa el interprete nos va a tirar error de maximum recursion depth exc
 
 ## Conclusion
 - La recursión es el proceso por el cual la funcion se invoca a si misma. y permite crear nuevo tipos de ciclos.
-- Para escribir una funcion recursiva siempre hay que considerar el caso base(El que tiene la recursion) y
+- Para escribir una funcion recursiva siempre hay que considerar el caso base(Detiene la recursion) y
   el caso recursivo que es el que realiza la llamada recursiva. Si no tiene caso base es bucle infitnito
 - Una funcion no es mejor ni peor por ser recursiva.
