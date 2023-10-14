@@ -139,3 +139,41 @@ Metodo de la multiplicacion
 h(k)=L m * (k*A - L k*A L) L
 L es para indicar el piso
 A = un valor entre 0 y 1
+
+
+existen otras funciones hash en la literatura.
+
+Si tenemos las colisiones que podemos hacer?
+
+Cada slot tiene T[j] contiene una estructura de datos auxiliar que guardara todas las claves cuyo valor hash es j.
+Una eleccion comun es utilizar una lista enlazada, aunque podria ser cualquier otra estructura
+
+Una insercion toma siempre tiempo constante.
+La busqueda y el borrado siempre toma tiempo proporcional al tamaño de la lista.
+
+Listas enlazadas de tipo Node2
+```
+class Node2:
+    def __init__(self,key=None,element=None,next=None):
+        self.key=key
+        self.element=element
+        self.next=next
+```
+
+```
+class HashTableChaining(HashTable):
+    def insert(self,key,element):
+        node=Node2(key,element)
+        index=self.h(key)
+        node.next=self.T[index]
+        self.T[index]=node
+
+    def search(self,key):
+        pass
+
+    def delete(self,key)
+        pass
+```
+
+Resolucion de colision por direccionamiento abierto
+Busca la siguiente posicion vacia y la ocupa, pero no conviene ya que si tengo una tabla de 300000 espacios y yo quiero ocupar el espacio 300 y tengo todo ocupado hasta el 300000. puede pasar que se nos ocupe la tabla entonces tenemos que agrandarla.
