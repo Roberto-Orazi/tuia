@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Expenses } from './components/Expenses/Expenses';
 import { NewExpense } from './components/NewExpense/NewExpense';
 
-const dummy_expenses = [ //aca tengo un array con objetos adentro
+const DUMMY_EXPENSES = [ //aca tengo un array con objetos adentro
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -30,13 +30,13 @@ const dummy_expenses = [ //aca tengo un array con objetos adentro
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState(dummy_expenses)
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const addExpenseHandler = expense => {
+  const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses]
-    })
-  }
+      return [expense, ...prevExpenses];
+    });
+  };
   return (
     <div className="App">
       <header className="App-header">
