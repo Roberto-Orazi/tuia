@@ -11,13 +11,9 @@ export const AddUser = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-
-        props.onCalculate(userInput);
+        props.addUser(userInput);
+        setUserInput(initialValues);
     };
-
-    const resetHandler = () => {
-        setUserInput(initialValues)
-    }
 
     const changeHandler = (input, value) => {
         setUserInput((prevInput) => {
@@ -53,11 +49,8 @@ export const AddUser = (props) => {
                 </p>
             </div>
             <p className={classes.actions}>
-                <button onClick={resetHandler} type="reset" className={classes.buttonAlt}>
-                    Reset
-                </button>
                 <button type="submit" className={classes.button}>
-                    Calculate
+                    Add User
                 </button>
             </p>
         </form>

@@ -1,22 +1,31 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AddUser } from './Components/AddUser/AddUser';
 import { UsersList } from './Components/UsersList/UsersList';
+import { Modal } from './Components/ErrorModal/ErrorModal';
 
 function App() {
-  const [userInput, setUserInput] = useState(null)
+  const [userData, setUserData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const calculateHandler = (userInput) => {
-    setUserInput(userInput)
+    if (userInput['user-name'] === '' || userInput['age'] === 0) {
+      console.log('Modal debe abrirse');
+      setIsModalOpen(true);
+    } else {
+      setUserData((prevData) => [...prevData, userInput]);
+    }
   };
-  const userData = [];
-  if (userInput) {
-  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
-      <AddUser onCalculate={calculateHandler} />
-      {!userInput && <p style={{textAlign: 'center'}}>No Users Added!</p>}
-      {userInput && <UsersList data={userData} initialInvestment={userInput['current-savings']} />}
-
+      <AddUser addUser={calculateHandler} />
+      {userData.length === 0 && <p style={{ textAlign: 'center' }}>No Users Added!</p>}
+      {userData.length > 0 && <UsersList data={userData} />}
+      <Modal isOpen={isModalOpen} close={closeModal} message="Por favor, completa todos los campos." />
     </div>
   );
 }
