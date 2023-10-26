@@ -1,20 +1,24 @@
 import React from 'react';
+
+import { Card } from '../Card/Card';
+import { Button } from '../Button/Button';
 import classes from './ErrorModal.module.css';
 
-export const Modal = ({ isOpen, close, message }) => {
+export const ErrorModal = (props) => {
   return (
-    isOpen && (
-      <div className={classes.modal}>
-        <div className={classes['modal-content']}>
-          <span className={classes.close} onClick={() => {
-            console.log('Cerrando el modal');
-            close();
-          }}>
-            &times;
-          </span>
-          <p>{message}</p>
+    <div>
+      <div className={classes.backdrop} onClick={props.onConfirm} />
+      <Card className={classes.modal}>
+        <header className={classes.header}>
+          <h2>{props.title}</h2>
+        </header>
+        <div className={classes.content}>
+          <p>{props.message}</p>
         </div>
-      </div>
-    )
+        <footer className={classes.actions}>
+          <Button onClick={props.onConfirm}>Okay</Button>
+        </footer>
+      </Card>
+    </div>
   );
 };

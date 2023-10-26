@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
+
 import { AddUser } from './Components/AddUser/AddUser';
 import { UsersList } from './Components/UsersList/UsersList';
-import { Modal } from './Components/ErrorModal/ErrorModal';
 
 function App() {
-  const [userData, setUserData] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [usersList, setUsersList] = useState([]);
 
-  const calculateHandler = (userInput) => {
-    if (userInput['user-name'] === '' || userInput['age'] === 0) {
-      console.log('Modal debe abrirse');
-      setIsModalOpen(true);
-    } else {
-      setUserData((prevData) => [...prevData, userInput]);
-    }
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
   };
 
   return (
     <div>
-      <AddUser addUser={calculateHandler} />
-      {userData.length === 0 && <p style={{ textAlign: 'center' }}>No Users Added!</p>}
-      {userData.length > 0 && <UsersList data={userData} />}
-      <Modal isOpen={isModalOpen} close={closeModal} message="Por favor, completa todos los campos." />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   );
 }
