@@ -21,7 +21,7 @@ SELECT MIN(Price) from Products;
 /*Esto nos devuelve el MINIMO SI USAMOS MAX DEVUELVE EL MAXIMO de todos los valores de la columna price*/;
 
 /*Puedo combinar algo asi:*/
-SELECT ProductName, MIN(Price) from Products;
-WHERE ProductName IS NOT NULL /*Usamos esto porque sino el mas chico va a ser nulo*/
+SELECT ProductName, MIN(Price) from Products
+WHERE ProductName IS NOT NULL;/*Usamos esto porque sino el mas chico va a ser nulo*/
 /*En maximo no pasa porque los nulls son minimos en terminos numericos*/
 
