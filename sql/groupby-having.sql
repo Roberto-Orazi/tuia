@@ -5,8 +5,8 @@ GROUP BY CategoryID;
 
 SELECT SupplierID, ROUND(AVG(Price)) as promedio2 FROM Products
 WHERE ProductName IS NOT NULL  /*EN ESTE CASO SE USA WHERE PERO EL WHERE SE USA SOBRE UN CAMPO*/
-GROUP BY SupplierID;
-HAVING promedio > 40 /*NO PODEMOS USAR WHERE PROMEDIO > 40*/
+GROUP BY SupplierID
+HAVING promedio > 40; /*NO PODEMOS USAR WHERE PROMEDIO > 40*/
 /*tal como el where para filtra registro el HAVING FILTRA GRUPOS OSEA QUE SE USA DESPUES DEL GROUP BY*/
 /*NO SE PUEDE TRABAJAR CON CONDICIONES(OP LOGICOS, DE COMPARACION) EN UN WHERE QUE SEAN FRUTOS DE UNA FUNCION DE
 AGREGACION*/
@@ -26,7 +26,7 @@ ORDER BY Total
 SELECT ProductID, SUM(Quantity) as Total FROM OrderDetails
 GROUP BY ProductID
 ORDER BY Total ASC /*si queremos el producto mas vendido o menos vendido lo calculamos ordenandolo ascendente o descendente*/
-LIMIT 1 /* y luego lo limitamos al 1er valor*/
+LIMIT 1; /* y luego lo limitamos al 1er valor*/
 
 /*TAMPOCO SE PUEDE USAR UNA FUNCION DE AGREGACION CON EL RESULTADO DE OTRA FUNCION DE AGREGACION*/
 
