@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-export const TabButton = ({ children, onSelect, isSelected}) => {
+export const TabButton = ({ children, isSelected, ...props}) => {
     return (
         <li>
-            <button onClick={onSelect} className={isSelected ? 'active' : undefined}>
+            <button className={isSelected ? 'active' : undefined} {...props}>
                 {children}
             </button>
         </li>
