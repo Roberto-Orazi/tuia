@@ -32,4 +32,27 @@ SELECT  ProductID, SUM(Quantity) AS Total_Vendido,
 FROM [OrderDetails] OD
 WHERE  (SELECT Price FROM Products WHERE ProductID = OD.ProductID) > 40
 GROUP BY ProductID
-ORDER BY Total_Recaudado DESC;
+ORDER BY Total_Recaudado;
+
+SELECT * FROM ( /*ESTAMOS ARMANDO UNA TABLA*/
+SELECT  ProductID, SUM(Quantity) AS Total_Vendido,
+    (SELECT ProductName FROM Products WHERE ProductID = OD.ProductID) as Name,
+    round((SUM(Quantity) * (SELECT Price FROM Products WHERE ProductID = OD.ProductID))) AS Total_Recaudado
+FROM [OrderDetails] OD
+WHERE  (SELECT Price FROM Products WHERE ProductID = OD.ProductID) > 40
+GROUP BY ProductID
+ORDER BY Total_Recaudado
+);
+
+SELECT * FROM ( /*ESTAMOS ARMANDO UNA TABLA*/
+SELECT  ProductID, SUM(Quantity) AS Total_Vendido,
+    (SELECT ProductName FROM Products WHERE ProductID = OD.ProductID) as Name,
+    round((SUM(Quantity) * (SELECT Price FROM Products WHERE ProductID = OD.ProductID))) AS Total_Recaudado
+FROM [OrderDetails] OD
+WHERE  (SELECT Price FROM Products WHERE ProductID = OD.ProductID) > 40
+GROUP BY ProductID
+ORDER BY tota_recaudado
+)
+WHERE Total_Vendido > 100;
+
+/*Cuales son los empleados que vendieron mas del promedio*/;
