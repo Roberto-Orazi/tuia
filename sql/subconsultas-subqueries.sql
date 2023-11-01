@@ -56,3 +56,14 @@ ORDER BY tota_recaudado
 WHERE Total_Vendido > 100;
 
 /*Cuales son los empleados que vendieron mas del promedio*/;
+SELECT FirstName, LastName,
+(SELECT SUM(od.Quantity) FROM [orders] o, [OrderDetails] od
+WHERE o.EmployeeID = e.EmployeeID AND od.orderID = o.orderID) as unidades_totales
+FROM [Employees] e
+WHERE unidades_totales < (SELECT AVG(unidades_totales) FROM (
+SELECT (SELECT SUM(od.Quantity) FROM [orders] o, [OrderDetails] od
+WHERE o.EmployeeID = e2.EmployeeID AND od.orderID = o.orderID) as unidades_totales
+FROM [Employees] e2
+GROUP BY e2.EmployeeID
+))
+
