@@ -1,35 +1,22 @@
 import React from "react"
 
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-]
-export const GameBoard = ({ onSelectPlayer, turns }) => {
-    let gameBoard = initialGameBoard
-
-    for (const turn of turns) {
-        const { square, player } = turn
-        const { row, col } = square
-
-        gameBoard[row][col] = player
-    }
+export const GameBoard = ({ onSelectPlayer, board }) => {
     /* const [gameBoard, setGameBoard] = useState(initialGameBoard)
 
     const handleBoardSquare = (rowIndex, colIndex) => { setGameBoard((prevGameBoard) => { const updatedBoard =
-        [...prevGameBoard.map(innerArray => [...innerArray])] updatedBoard[rowIndex][colIndex] = activePlayerSimbol
+        [...prevGameBoard.map(innerArray => [...innerArray])] updatedBoard[rowIndex][colIndex] = activePlayerSymbol
             return updatedBoard }) onSelectPlayer() }
  */
     return (
         <ol id="game-board">
-            {gameBoard.map((row, rowIndex) => <li key={rowIndex}>
+            {board.map((row, rowIndex) => <li key={rowIndex}>
                 <ol>
-                    {row.map((playerSimbol, colIndex) =>
+                    {row.map((playerSymbol, colIndex) =>
                         <li key={colIndex}>
                             <button onClick={() =>
                                 onSelectPlayer(rowIndex, colIndex)}
-                                disabled={playerSimbol !== null}>
-                                {playerSimbol}
+                                disabled={playerSymbol !== null}>
+                                {playerSymbol}
                             </button>
                         </li>)}
                 </ol>
