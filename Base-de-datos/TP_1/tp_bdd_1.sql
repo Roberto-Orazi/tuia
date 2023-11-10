@@ -46,7 +46,7 @@ Id int primary key identity (1,1) not null,
 Patente varchar(20),
 Marca VARCHAR(50),
 Modelo VARCHAR(50),
-año int,
+anio int,
 IdRemolque int,
 FOREIGN KEY (IdRemolque) REFERENCES TipoRemolque(Id)
 )
@@ -62,13 +62,13 @@ TelCelular VARCHAR(20),
 Edad int,
 email VARCHAR(100),
 IdRegistro varchar(20),
-IdCamion int,
 FOREIGN KEY (IdDireccion) REFERENCES Direcciones(Id)
 )
 
 create table Viajes (
 Id int primary key identity (1,1) not null,
 IdDireccionOrigen int,
+IdDireccionDestino int,
 KmsRecorridos int,
 IdCliente int,
 IdCamion int,
@@ -80,5 +80,6 @@ FechaLlegadaReal date,
 FOREIGN KEY (IdCliente) REFERENCES Clientes(Id),
 FOREIGN KEY (IdConductor) REFERENCES Conductores(Dni),
 FOREIGN KEY (IdCamion) REFERENCES Camiones(Patente),
-FOREIGN KEY (IdDireccionOrigen) REFERENCES Direcciones(Id)
+FOREIGN KEY (IdDireccionOrigen) REFERENCES Direcciones(Id),
+FOREIGN KEY (IdDireccionDestino) REFERENCES Direcciones(Id)
 );
