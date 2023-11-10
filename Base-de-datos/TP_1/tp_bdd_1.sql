@@ -1,6 +1,7 @@
-create database TpBDD2
+/*Tablas*/
+create database TpBDD
 
-use TpBDD2
+use TpBDD
 
 create table Provincias(
 Id int primary key identity (1,1) not null,
@@ -21,6 +22,14 @@ Calle VARCHAR(100),
 Numero VARCHAR(10),
 IdCiudad int,
 FOREIGN KEY (IdCiudad) REFERENCES Ciudades(Id)
+)
+
+create table DireccionesOrigenDestino(
+Id int primary key identity (1,1) not null,
+IdOrigen int,
+IdDestino int,
+FOREIGN KEY (IdOrigen) REFERENCES Ciudades(Id),
+FOREIGN KEY (IdDestino) REFERENCES Ciudades(Id)
 )
 
 create table Clientes(
@@ -46,7 +55,7 @@ Id int primary key identity (1,1) not null,
 Patente varchar(20),
 Marca VARCHAR(50),
 Modelo VARCHAR(50),
-anio int,
+año int,
 IdRemolque int,
 FOREIGN KEY (IdRemolque) REFERENCES TipoRemolque(Id)
 )
@@ -62,13 +71,12 @@ TelCelular VARCHAR(20),
 Edad int,
 email VARCHAR(100),
 IdRegistro varchar(20),
-FOREIGN KEY (IdDireccion) REFERENCES Direcciones(Id)
+FOREIGN KEY (IdDireccion) REFERENCES Direcciones(Id),
 )
 
 create table Viajes (
 Id int primary key identity (1,1) not null,
-IdDireccionOrigen int,
-IdDireccionDestino int,
+IdDireccionesOrigenDestino int,
 KmsRecorridos int,
 IdCliente int,
 IdCamion int,
@@ -78,8 +86,18 @@ FechaSalidaReal date,
 FechaLlegadaEst date,
 FechaLlegadaReal date,
 FOREIGN KEY (IdCliente) REFERENCES Clientes(Id),
-FOREIGN KEY (IdConductor) REFERENCES Conductores(Dni),
-FOREIGN KEY (IdCamion) REFERENCES Camiones(Patente),
-FOREIGN KEY (IdDireccionOrigen) REFERENCES Direcciones(Id),
-FOREIGN KEY (IdDireccionDestino) REFERENCES Direcciones(Id)
+FOREIGN KEY (IdCamion) REFERENCES Camiones(Id),
+FOREIGN KEY (IdConductor) REFERENCES Conductores(Id),
+FOREIGN KEY (IdDireccionesOrigenDestino) REFERENCES DireccionesOrigenDestino(Id)
+);
+
+CREATE TABLE AsignacionesViaje (
+    IdCamion int,
+    IdChofer int,
+    IdViaje int,
+    FechaAsignacion date,
+    PRIMARY KEY (IdCamion, IdChofer, IdViaje),
+    FOREIGN KEY (IdCamion) REFERENCES Camiones(Id),
+    FOREIGN KEY (IdChofer) REFERENCES Conductores(Id),
+    FOREIGN KEY (IdViaje) REFERENCES Viajes(Id)
 );
