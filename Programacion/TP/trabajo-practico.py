@@ -25,6 +25,12 @@ def openFile(nombre_archivo) -> list[list[str]]:
         for fila in lector:
             datos.append(fila)
     return datos
+    '''
+    with open('previaje.csv') as previaje:
+        lector = csv.reader(previaje, 'r')
+        next(lector)
+    '''
+
 
 datos_provincia = openFile("coordenadas_provincias.csv")
 datos_previaje = openFile("previaje.csv")
