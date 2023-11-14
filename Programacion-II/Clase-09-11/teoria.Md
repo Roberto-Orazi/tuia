@@ -56,7 +56,7 @@ basadas en informacion inmediatamente disponible, sin importar consecuencias fut
 
 Suelen ser simples y se suelen emplear para problemas de optimizacion.
 - Conjunto o lista de candidatos
-- COnjunto de decisiones ya tomadas
+- Conjunto de decisiones ya tomadas
 - Una funcion que determina si los candidatos son o no solucion al problema
 - Una funcion si determina que es la solucion optima
 
