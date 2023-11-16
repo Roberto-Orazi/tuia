@@ -10,7 +10,7 @@ No Cumple 1Fn ya que tiene multiples valores
 
 Cumple con 1FN pero no con 2FN ya que nombre depende de cliente_id tambien, no solo de pedido_id
 | Pedido_ID | Producto      | Categoria   | Precio   | Cliente_ID | Nombre     |
-|-----------|---------------|-------------|----------|------------|------------|
+|-----------|---------------|-------------|----------|------------|------------| /* Aca el problema que tenemos es que depende de la fk*/
 | 1         | Laptop        | Electrónica | 1200     | 101        | Juan       |
 | 2         | Smartphone    | Electrónica | 700      | 101        | Juan       |
 | 3         | Refrigerador  | Electrodom. | 1500     | 102        | María      |
@@ -34,3 +34,19 @@ para que la tabla anterior cumpla 2fn tenemosq ue hacer una tabla cliente:
 Una relacion esta en tercera forma normal si y solo si esta en 2FN y todos los atributos no clave dependen de manera no transitiva de la clave primaria.
 ```
 La tabla anterior cumple 3fn ya que no hay dependencia transitiva
+pero armamos este ejemplo que no esta en 3fn ya que ciudad depende estado:
+
+| Cliente_ID | Nombre  | CP      | Ciudad  | Estado  |
+|------------|---------|---------|---------|---------|
+| 101        | Juan    | 12341   | Bsas    | Bsas    |
+| 102        | María   | 23512   | Cordoba | Cordoba | /*Aca depende de otro atributo, ciudad depende de estado*/
+
+| Cliente_ID | Nombre  | Id_ciudad |
+|------------|---------|---------  |
+| 101        | Juan    | 1         |
+| 102        | María   | 2         |
+
+| Id      | CP      | Ciudad  | Estado  |
+|---------|---------|---------|---------|
+| 1       | 12341   | Bsas    | Bsas    |
+| 2       | 23512   | Cordoba | Cordoba |
