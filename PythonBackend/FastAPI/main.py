@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 app = FastAPI()
-
+# /docs abre swagger
 @app.get("/")
 async def root():
     return "Hola FastAPI!"
@@ -9,3 +9,4 @@ async def root():
 @app.get("/url")
 async def url():
     return{"url": 'robertoorazi.com.ar'}
+
