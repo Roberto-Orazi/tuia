@@ -74,4 +74,7 @@ La matriz de adyacencia se construye de una matriz nxn que serian los vertices p
 
 ### Matriz de incidencia
 La matriz de incidencia se construye con una matrix mxn en el cual m son los vertices y n las aristas.
-Con la matriz de incidencia luego sabemos el grado de el vertice ya que si sumamos todas sus incidencias logramos el grado. 
+Con la matriz de incidencia luego sabemos el grado de el vertice ya que si sumamos todas sus incidencias logramos el grado.
+
+
+## Algoritmo de dijkstra
