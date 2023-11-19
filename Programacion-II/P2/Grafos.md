@@ -51,5 +51,27 @@ Osea:
 
 ## Mas grafos
 
-### Grafo convexo
-Es un grafo donde 
+### Grafo conexo
+Es un grafo donde siempre hay un camino entre cualquier par de vertices. Los grafos no conexos consisten en varias partes llamadas componentes conexas.
+La cantidad de componentes conexas se denota como k(G)
+
+### SubGrafo
+Un grafo G'=(V',E') es sub grafo de G=(V,E) si cumple con ciertas condiciones, incluyendo que sus vertices y aristas son un subconjunto de los de G.
+
+### Subgrafo complementario
+El subgrafo complementario de un vertice V en un grafo G denotado por G - v elimina el vertice v y sus aristas incidentes.
+
+### Grado de un vertice
+El grado es el numero de aristas incidentes en v
+
+### Teorema del grado
+En un grafo no dirigido o multigrafo la suma de los grados de todos los vertices es igual a 2 veces el numero de aristas. Lo que implica que la cantidad de vertices con grado impar debe ser par.
+
+
+## Representacion de grafos
+### Matriz de adyacencia
+La matriz de adyacencia se construye de una matriz nxn que serian los vertices por los vertices y ponemos un uno o cero dependiendo si son adyacentes o no
+
+### Matriz de incidencia
+La matriz de incidencia se construye con una matrix mxn en el cual m son los vertices y n las aristas.
+Con la matriz de incidencia luego sabemos el grado de el vertice ya que si sumamos todas sus incidencias logramos el grado. 
