@@ -78,3 +78,15 @@ Con la matriz de incidencia luego sabemos el grado de el vertice ya que si sumam
 
 
 ## Algoritmo de dijkstra
+El algoritmo de dijkstra tiene el objetivo de encotnrar el camino mas corto entre dos vertices dados en un grafo ponderado y conexo.
+
+Si o si tiene que ser un grafo ponderado o conexo y que los pesos de las aristas sean siempre positivos.
+
+1. Inicializar las distancias: D(a)=0 y para cada vertice v≠a inicializa D(v)=∞
+   a = al vertice de origen.
+2. Inicializa el conjunto T como el conjunto de todos los vertices.
+3. Selecciona un vertice v en T tal que D(v) sea minimo
+4. Quita v de T
+5. Para cada vertice t en T adyacente a v, actualizar la etiqueta D(t)=min{D(t),D(v)+w(v,t)}
+6. si z ∈ T, repite desde el paso 3, sino terminamos. Y D(z) es la longitud de la ruta mas corta de a a z
+
