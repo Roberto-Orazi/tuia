@@ -90,3 +90,32 @@ Si o si tiene que ser un grafo ponderado o conexo y que los pesos de las aristas
 5. Para cada vertice t en T adyacente a v, actualizar la etiqueta D(t)=min{D(t),D(v)+w(v,t)}
 6. si z ∈ T, repite desde el paso 3, sino terminamos. Y D(z) es la longitud de la ruta mas corta de a a z
 
+## Arboles
+
+Los arboles son un tipo especial de grafo.
+Un arbol es un grafo simple que satisface la propiedad de que para cualquier par de vertices v y w en el arbol, existe un unico camion unico de v a w.
+
+Se pueden clasificar los arboles en arboles con raiz y arboles libres.
+Un arbol con raiz tiene un nodo especial designado como la raiz.
+
+Propiedades:
+- Un grafo conexo y sin ciclos es un arbol.
+- Un grafo conexo con n vertices y n-1 aristas es un arbol
+- Un grafo con n vertices y n-1 aristas, sin ciclos es un arbol.
+
+### Arboles de expansion
+Un arbol de expansion de un grafo es un subgrafo que cumple con:
+1. Es un subgrafo de G
+2. Es un arbol
+3. Contiene todos los vertices de G.
+
+Un arbol de expansion para un grafo existe si y solo si el grafo es conexo.
+
+### Arbol de expansion minima
+Un arbol de expansion minima de un grafo con esos pesos es un arbol de expansion cuyo peso total es minimo.
+
+El algoritmo de prim es un metodo para encontrar un arbol de expansion minima.
+Inicia con un vertice Y, en cada paso, agrega la arista de peso minimo que conecta un vertice en el arbol con uno fuera de el, hasta que todos los vertices estan incluidos.
+
+Se usan para conectar vertices de manera eficiente y minimizando el peso total.
+
