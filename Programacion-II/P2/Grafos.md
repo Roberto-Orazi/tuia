@@ -40,8 +40,9 @@ La longitud de un camion del grafo ponderado es la suma de los pesos de las aris
 ## Grafos especiales
 
 ### Grafo Completo
-El grafo completo con n vertices, notado como Kn, es un grafo simple con n vertices, y hay exactamente una arista por
-cada par distinto de vertices. Ej: K4 es un grafo completo con 4 vertices y 3 aristas.
+El grafo completo con n vertices, notado como Kn, es un grafo simple con n vertices, y hay exactamente una arista por cada par distinto de vertices.
+Ej: K4 es un grafo completo con 4 vertices y 6 aristas.
+para calcular esto es (n*(n-1))/2
 
 ### Grafo bipartito
 El grafo G=(V,E) es bipartito si se pueden dividir sus vertices en dos conjuntos disjuntos v1,v2 de manera que la union
@@ -72,8 +73,7 @@ incidentes.
 El grado es el numero de aristas incidentes en v
 
 ### Teorema del grado
-En un grafo no dirigido o multigrafo la suma de los grados de todos los vertices es igual a 2 veces el numero de
-aristas. Lo que implica que la cantidad de vertices con grado impar debe ser par.
+En un grafo no dirigido o multigrafo la suma de los grados de todos los vertices es igual a 2 veces el numero de aristas. Lo que implica que la cantidad de vertices con grado impar debe ser par.
 
 
 ## Representacion de grafos
@@ -133,3 +133,18 @@ Se usan para conectar vertices de manera eficiente y minimizando el peso total.
 Son circuito euleriano si:
 - Si todos los vertices son pares
 - Si hay dos vertices con grado impar y empieza en uno de los impares y termina en el otro
+
+## Circuito euleriano
+Un grafo es euleriano si y solo si es conexo y todos sus vertices tienen grado par.
+Empieza y termina en un punto especifico.
+
+## Camino euleriano
+Un grafo admite un camino euleriano(NO CIRCUITO) si y solo si es conexo y todos sus vertices tienen grado par salvo dos de grado impar.
+Si existe el camino empieza y termina en uno de los 2 vertices de grado impar.
+osea empieza en uno y termina en el otro
+
+## Formula ejercicio 9
+si tengo
+25 x 5 = 2E
+E = 125/2 = 62.5
+como no es entero par no es posible
