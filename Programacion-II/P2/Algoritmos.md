@@ -91,7 +91,7 @@ candidatos = [1000, 500, 200, 100, 50, 20, 10] * 2
 def es_solucion(eleccion_actual):
     return(sum(eleccion_actual) == total)
 
-def elegir_candidato():
+def elegir_candidato(candidatos):
     return(max(candidatos))
 
 def es_factible(eleccion):"
@@ -159,3 +159,31 @@ Pasos para implementar:
 
 Para concluir es una estrategia directa y facil de entender, pero puede volverse impracticable para problemas grandes debido a su complejidad exponencial.
 
+resumen Divide & conquer
+- es_caso_base(problema: "Problema") -> bool: Verifica si el problema dado cumple con las condiciones para ser considerado un caso base. Retorna un valor booleano (True o False).
+
+- resolver_caso_base(problema: "Problema") -> "Solución": Proporciona una solución directa al problema cuando este es un caso base. Retorna la solución correspondiente.
+
+- dividir(problema: "Problema") -> "(Problema, Problema)": Divide el problema en dos subproblemas más pequeños. Retorna una tupla con los dos subproblemas resultantes.
+
+- combinar(s1: "Solución", s2: "Solución") -> "Solución": Combina las soluciones de dos subproblemas en una solución más grande. Retorna la solución combinada.
+
+- resolver(problema: "Problema") -> "Solución": Utiliza la estrategia de dividir y conquistar para resolver el problema dado. Llama a las funciones anteriores para gestionar casos base, dividir el problema, combinar soluciones y finalmente devolver la solución completa.
+
+resumen greedy
+
+- es_solucion(eleccion_actual: "Solucion") -> bool: Verifica si la elección actual es una solución al problema. Retorna un valor booleano.
+
+- elegir_candidato(problema: "Problema") -> "Elemento": Elige un candidato (elemento) para resolver el problema dado. Retorna el elemento seleccionado.
+
+- es_factible(eleccion: "Solucion") -> bool: Determina si la elección (solución) es factible, es decir, cumple con ciertas condiciones. Retorna un valor booleano.
+
+- resolver(problema: "Problema") -> "Solucion": Resuelve el problema dado y retorna la solución encontrada.
+
+resumen busqueda exaustiva o fuerza bruta
+
+- es_solucion(solucion: "Solución") -> bool: Verifica si la solución dada cumple con los criterios para ser considerada como solución al problema. Retorna un valor booleano (True o False).
+
+- candidatos() -> "Generador(Solución)": Genera y proporciona candidatos potenciales para resolver el problema. Retorna un generador que produce soluciones.
+
+- resolver(problema: "Problema") -> "Solución": Encuentra y devuelve una solución al problema dado. Utiliza el generador de candidatos y verifica las soluciones hasta encontrar una que cumpla con los criterios de la función es_solucion.
