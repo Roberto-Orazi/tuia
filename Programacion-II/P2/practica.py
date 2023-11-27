@@ -30,4 +30,3 @@ if resolver(asd, numeroasd):
 else:
     print('No está en la lista.')
 
-    
