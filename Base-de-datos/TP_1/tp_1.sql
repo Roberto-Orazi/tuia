@@ -126,11 +126,23 @@ CREATE PROCEDURE ActualizarViajeEnvio
     @NuevaFechaLlegadaEst DATE
 AS
 BEGIN
-    UPDATE Viajes
-    SET FechaLlegadaEst = @NuevaFechaLlegadaEst
-    WHERE Id = @IdViaje;
+    IF EXISTS (
+        SELECT 1
+        FROM Viajes
+        WHERE Id = @IdViaje
+          AND FechaLlegadaReal IS NULL
+    )
+    BEGIN
+        UPDATE Viajes
+        SET FechaLlegadaEst = @NuevaFechaLlegadaEst
+        WHERE Id = @IdViaje;
 
-    PRINT 'Se actualizo la fecha estimada'
+        PRINT 'Fecha estimada de llegada actualizada exitosamente.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'No se puede actualizar la fecha estimada de llegada para un viaje que ya ha llegado.';
+    END
 END;
 
 /*Inserts*/
