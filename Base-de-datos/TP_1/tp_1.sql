@@ -7,6 +7,7 @@ Id int primary key identity (1,1) not null,
 Provincia VARCHAR(50),
 )
 
+CREATE INDEX idx_Provincias_Provincia ON Provincias (Provincia);
 
 create table Ciudades(
 Id int primary key identity (1,1) not null,
@@ -14,6 +15,8 @@ Ciudad VARCHAR(50),
 IdProvincia int,
 FOREIGN KEY (IdProvincia) REFERENCES Provincias(Id)
 )
+
+CREATE INDEX idx_Ciudades_IdProvincia ON Ciudades (IdProvincia);
 
 create table Direcciones(
 Id int primary key identity (1,1) not null,
@@ -23,6 +26,9 @@ IdCiudad int,
 FOREIGN KEY (IdCiudad) REFERENCES Ciudades(Id)
 )
 
+CREATE INDEX idx_Direcciones_IdCiudad ON Direcciones (IdCiudad);
+
+
 create table DireccionesOrigenDestino(
 Id int primary key identity (1,1) not null,
 IdOrigen int,
@@ -30,6 +36,9 @@ IdDestino int,
 FOREIGN KEY (IdOrigen) REFERENCES Direcciones(Id),
 FOREIGN KEY (IdDestino) REFERENCES Direcciones(Id)
 )
+
+CREATE INDEX idx_DireccionesOrigenDestino_IdOrigen ON DireccionesOrigenDestino (IdOrigen);
+CREATE INDEX idx_DireccionesOrigenDestino_IdDestino ON DireccionesOrigenDestino (IdDestino);
 
 create table Clientes(
 Id int primary key identity (1,1) not null,
@@ -42,6 +51,14 @@ IdDireccion int,
 Telefono VARCHAR(20),
 Email VARCHAR(100),
 FOREIGN KEY (IdDireccion) REFERENCES Direcciones(Id)
+)
+
+CREATE INDEX idx_Clientes_IdDireccion ON Clientes (IdDireccion);
+
+ALTER TABLE Clientes
+ADD CONSTRAINT CK_ClienteTipo CHECK ( /*ESTO LO METIMOS PARA VERIFICAR LO DE SI ES EMPRESA O NO*/
+    (Nombre IS NOT NULL AND Apellido IS NOT NULL AND Dni IS NOT NULL AND RazonSocial IS NULL AND Cuit IS NULL) OR
+    (Nombre IS NULL AND Apellido IS NULL AND Dni IS NULL AND RazonSocial IS NOT NULL AND Cuit IS NOT NULL)
 )
 
 create table TipoRemolque (
@@ -100,6 +117,21 @@ CREATE TABLE AsignacionesViaje (
     FOREIGN KEY (IdChofer) REFERENCES Conductores(Id),
     FOREIGN KEY (IdViaje) REFERENCES Viajes(Id)
 );
+
+GO /*Esto se usa para separar bloques de codigo Es para el CP*/
+
+/*Aca vamos a agregar el store procedure*/
+CREATE PROCEDURE ActualizarViajeEnvio
+    @IdViaje INT,
+    @NuevaFechaLlegadaEst DATE
+AS
+BEGIN
+    UPDATE Viajes
+    SET FechaLlegadaEst = @NuevaFechaLlegadaEst
+    WHERE Id = @IdViaje;
+
+    PRINT 'Se actualizo la fecha estimada'
+END;
 
 /*Inserts*/
 INSERT INTO Provincias (Provincia) VALUES
@@ -218,6 +250,7 @@ INSERT INTO AsignacionesViaje (IdCamion, IdChofer, IdViaje, FechaAsignacion) VAL
 (1, 9, 19, '2023-12-20'),
 (2, 10, 20, '2023-12-21');
 
+EXEC ActualizarViajeEnvio @IdViaje = 1, @NuevaFechaLlegadaEst = '2023-12-31';
 
 /*consultas*/
 /*Cuantos viajes se realizaron hacia la provincia de santafe*/
