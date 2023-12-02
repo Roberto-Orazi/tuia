@@ -1,0 +1,42 @@
+SELECT CategoryID, ROUND(AVG(Price)) as promedio FROM Products /*aca tengo el promedio de cada categoria*/
+WHERE CategoryID IS NOT NULL /*PRIMERO HAY QUE HACER EL FILTRADO ANTES DE AGRUPAR*/
+GROUP BY CategoryID;
+/*aca estamos agrupando por CategoryID y haciendo un promedio de todos los precios de un mismo supplier*/
+
+SELECT SupplierID, ROUND(AVG(Price)) as promedio2 FROM Products
+WHERE ProductName IS NOT NULL  /*EN ESTE CASO SE USA WHERE PERO EL WHERE SE USA SOBRE UN CAMPO*/
+GROUP BY SupplierID
+HAVING promedio > 40; /*NO PODEMOS USAR WHERE PROMEDIO > 40*/
+/*tal como el where para filtra registro el HAVING FILTRA GRUPOS OSEA QUE SE USA DESPUES DEL GROUP BY*/
+/*NO SE PUEDE TRABAJAR CON CONDICIONES(OP LOGICOS, DE COMPARACION) EN UN WHERE QUE SEAN FRUTOS DE UNA FUNCION DE
+AGREGACION*/
+
+/*
+ORDEN
+PRIMERO TRABAJA EL WHERE EN EL SELECT
+DESPUES HACE EL PROMEDIO POR LO TANTO EL PROMEDIO NO CONTARIA A LOS NULOS
+*/
+
+SELECT ProductID, SUM(Quantity) as Total FROM OrderDetails
+GROUP BY ProductID
+HAVING Total < 50 /*aca limitamos a que el valor total sea menor a 50*/
+ORDER BY Total
+
+
+SELECT ProductID, SUM(Quantity) as Total FROM OrderDetails
+GROUP BY ProductID
+ORDER BY Total ASC /*si queremos el producto mas vendido o menos vendido lo calculamos ordenandolo ascendente o descendente*/
+LIMIT 1; /* y luego lo limitamos al 1er valor*/
+
+/*TAMPOCO SE PUEDE USAR UNA FUNCION DE AGREGACION CON EL RESULTADO DE OTRA FUNCION DE AGREGACION*/
+
+/*
+WHERE FILTRA REGISTROS
+HAVING FILTRA GRUPOS
+1. SELECIONAMOS LOS CAMPOS (SELECT)
+2. FILTRAMOS REGISTROS (WHERE)
+3. AGRUPAR REGISTROS (GROUP BY)
+4. HAVING(RECORDAR QUE NO SE PUEDE USAR SIN GROUP BY)
+
+NO SE PUEDE USAR FUNCIONES DE AGRUPACION ADENTRO DE RESULTADOS DE FUNCIONES DE AGRUPACIONES
+*/
