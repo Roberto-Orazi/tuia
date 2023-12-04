@@ -315,3 +315,43 @@ JOIN Clientes c ON v.IdCliente = c.Id
 JOIN Conductores cond ON v.IdConductor = cond.Id
 WHERE YEAR(v.FechaSalidaEst) = 2023
 ORDER BY v.KmsRecorridos DESC;
+
+GO
+CREATE PROCEDURE ObtenerPatenteCamionAsignado -- Creamos el procedure
+    @DniChofer VARCHAR(20),
+    @FechaConsulta DATE,
+    @MensajeResultado NVARCHAR(200) OUTPUT,
+    @PatenteCamion NVARCHAR(20) OUTPUT
+AS
+BEGIN
+    DECLARE @IdChofer INT
+
+    -- Obtenemos el ID del conductor con el DNI
+    SELECT @IdChofer = Id
+    FROM Conductores
+    WHERE Dni = @DniChofer
+
+    IF @IdChofer IS NOT NULL
+    BEGIN
+        -- Verificamos si el conductor tiene un camión asignado en la fecha
+        SELECT @PatenteCamion = c.Patente
+        FROM AsignacionesViaje av
+        INNER JOIN Camiones c ON av.IdCamion = c.Id
+        INNER JOIN Viajes v ON av.IdViaje = v.Id
+        WHERE av.IdChofer = @IdChofer
+          AND @FechaConsulta BETWEEN v.FechaSalidaEst AND v.FechaLlegadaEst
+
+        IF @PatenteCamion IS NOT NULL
+        BEGIN
+            SET @MensajeResultado = 'El chofer fue encontrado y tiene un camión asignado en la fecha dada.'
+        END
+        ELSE
+        BEGIN
+            SET @MensajeResultado = 'El chofer fue encontrado, pero no tiene un camión asignado en la fecha dada.'
+        END
+    END
+    ELSE
+    BEGIN
+        SET @MensajeResultado = 'No se encontró al chofer con el DNI proporcionado.'
+    END
+END;
