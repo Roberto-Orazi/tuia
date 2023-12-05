@@ -147,3 +147,7 @@ Las entidades de DireccionesOrigenDestino en relacion a las direcciones son las 
 un destino puede tener solo 1 direccion mientras que nuestras direcciones tienen siempre mas de 1 siempre 
 ya que tenemos 2 como minimo, origen y destino.
 ```
+
+# Third Normal Form
+Ya esta normalizada, ya que esta en segunda forma normal y todos los atributos no clave dependen de manera no transitiva de la clave primaria.
+
