@@ -264,6 +264,19 @@ INSERT INTO AsignacionesViaje (IdCamion, IdChofer, IdViaje, FechaAsignacion) VAL
 
 EXEC ActualizarViajeEnvio @IdViaje = 1, @NuevaFechaLlegadaEst = '2023-12-31';
 
+-- Variables de salida para el procedimiento ObtenerPatenteCamionAsignado
+DECLARE @MensajeResultado NVARCHAR(200), @PatenteCamion NVARCHAR(20)
+
+-- Ejecutar el procedimiento ObtenerPatenteCamionAsignado
+EXEC ObtenerPatenteCamionAsignado
+    @DniChofer = '12345678',
+    @FechaConsulta = '2023-12-31',
+    @MensajeResultado = @MensajeResultado OUTPUT,
+    @PatenteCamion = @PatenteCamion OUTPUT;
+
+-- Mostrar resultados
+PRINT 'Mensaje Resultado: ' + @MensajeResultado
+PRINT 'Patente del Camión: ' + ISNULL(@PatenteCamion, 'No asignado');
 /*consultas*/
 /*Cuantos viajes se realizaron hacia la provincia de santafe*/
 SELECT COUNT(DISTINCT v.Id) AS TotalViajes
