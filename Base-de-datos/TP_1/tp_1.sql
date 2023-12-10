@@ -28,7 +28,6 @@ FOREIGN KEY (IdCiudad) REFERENCES Ciudades(Id)
 
 CREATE INDEX idx_Direcciones_IdCiudad ON Direcciones (IdCiudad);
 
-
 create table DireccionesOrigenDestino(
 Id int primary key identity (1,1) not null,
 IdOrigen int,
@@ -279,7 +278,7 @@ PRINT 'Mensaje Resultado: ' + @MensajeResultado
 PRINT 'Patente del Camión: ' + ISNULL(@PatenteCamion, 'No asignado');
 /*consultas*/
 /*Cuantos viajes se realizaron hacia la provincia de santafe*/
-SELECT COUNT(DISTINCT v.Id) AS TotalViajes
+SELECT COUNT(v.Id) AS TotalViajes
 FROM Viajes v
 JOIN DireccionesOrigenDestino dod ON v.IdDireccionesOrigenDestino = dod.Id
 JOIN Direcciones d ON dod.IdDestino = d.Id
