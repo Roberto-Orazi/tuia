@@ -13,6 +13,8 @@ No hice curacion de datos por un tema de que no estuvo tan mal la separacion de 
 ## Entrenamiento
 ### Largo de dataset
 Hice un entrenamiento con 7 canciones, alrededor de 20 minutos de voz
+El cantante con el que entrene mi modelo es bryant myers y quise hacer que cante una cancion de emilia mernes mas especificamente [iconic](https://www.youtube.com/watch?v=cYOdk3SSslQ) del album mp3.
+
 
 ### Tiempo de entrenamiento
 Tardo 54 minutos en entrenar con los siguientes parametros:
@@ -44,3 +46,8 @@ Hubo muchos fraudes y ventas de contenido como contenido original y creado natur
 
 ### Conclusion
 La mezcla de ia y musica trae problemas serios que hay que pensar antes de crear y difundir. Todavia es algo que esta muy crudo pero que con el tiempo va a ir mejorando en terminos de regulacion de uso.
+
+## Link del drive con los datos + el dataset
+
+[Carpeta de project main + dataset con pistas](https://drive.google.com/drive/folders/17T53Dy_wZd0y06_9VuQv1aqD8SdAPvVj?usp=drive_link)
+
