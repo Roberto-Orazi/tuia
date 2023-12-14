@@ -116,9 +116,11 @@ where paciente.nombre = 'Pepe sanchez'
 SELECT descripcion from medicacion
 join consulta on consulta.idconsulta = medicacion.idconsulta
 join paciente on paciente.dni = consulta.dni
-WHERE
-paciente.nombre='Facundo conte'
-AND
-consulta.fecha>'2018-01-01'
+WHERE paciente.nombre='Facundo conte'
+AND consulta.fecha >'2018-01-01';
 
-SELECT count()
+SELECT count(vacunacion.dni) from programavacunacion
+join vacunacion on vacunacion.idprograma = programavacunacion.id
+where YEAR(programavacunacion.fechain) IN (2022,2023)
+GROUP BY programavacunacion.idprograma, programavacunacion.descripcion;
+
