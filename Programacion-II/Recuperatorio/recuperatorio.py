@@ -67,3 +67,102 @@ print(f"Billetes necesarios para un vuelto de {vuelto}:", billetes_necesarios)
 
 total_billetes = caja_negocio.sumarBilletes()
 print("Valor total de billetes en la caja:", total_billetes)
+
+'''
+2. Escribe un metodo invertir de la clase ListaEnlazada que invierta el orden de la lista, puede considerar que estan definidos todos lso metodos de la interfaz lista
+'''
+from typing import Any
+
+class Nodo:
+    def __init__(self,dato:Any=None, prox: 'Nodo' | None = None):
+        self.dato=dato
+        self.prox=prox
+
+    def __str__(self):
+        return str(self.dato)
+
+class ListaEnlazada:
+    def __init__(self)->None:
+        self.prim=None
+        self.len=0
+
+    def insert(self,i:int,x:Any)->None:
+        if i < 0 or i > self.len:
+            print('Posicion invalida')
+            return
+
+        nuevo=_Nodo(X)
+        if i == 0:
+            nuevo.prox=self.prim
+            self.prim=nuevo
+        else:
+            n_ant=self.prim
+            for pos in range(1,i):
+                n_ant=n_ant.prox
+
+            nuevo.prox = n_ant.prox
+            n_ant.prox=nuevo
+
+        self.len+=1
+
+    def pop(self, i:int | None = None)->Any:
+        """
+        Elimina el nodo de la posición i, y devuelve el dato contenido.
+        Si i está fuera de rango, se muestra un mensaje de error y se retorna inmediatamente.
+        Si no se recibe la posición, devuelve el último elemento.
+        """
+        if i is None:
+            i=self.len-1
+
+        if i<0 or i>=self.len:
+            print('Posicion invalida')
+            return
+
+        if i==0:
+            dato=self.prim.dato
+            self.prim=self.prim.prox
+            # Saltea la cabeza de la lista
+
+        else:
+            n_ant=self.prim # Buscamos nodos en pos i - 1 y i
+            n_act=n_ant.prox
+            for pos in range(1,i):
+                n_ant=n_act
+                n_act=n_ant.prox
+
+            dato=n_act.dato
+            n_ant.prox=n_act.prox # Guardamos el dato y descartamos el nodo
+
+        self.len-=1
+        return dato
+
+    def remove(self,x:Any)->None:
+        """
+        Borra la primera aparición del valor x en la lista.
+        Si x no está en la lista, imprime un mensaje de error
+        y retorna inmediatamente.
+        """
+        if self.len==0:
+            print('La liista esta vacia')
+            return
+
+        if self.prim.dato==x:
+            self.prim=self.prim.prox
+            # Saltea la cabeza de la lista
+
+        else:
+            n_ant=self.prim
+            n_act=n_ant.prox
+            while n_act is not None and n_act.dato != x:
+                n_ant=n_act
+                n_act=n_ant.prox
+
+            if n_act==None:
+                print('el valor no esta en la lista')
+                return
+            # Ahi buscamos el nodo anterior al que contiene a x(n_ant)
+
+        n_ant=n_act.prox
+        self.len-=1
+        # Por ultimo descartamos el nodo
+
