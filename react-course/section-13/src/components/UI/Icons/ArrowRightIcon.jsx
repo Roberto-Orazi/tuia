@@ -1,3 +1,4 @@
+// million-ignore
 import { log } from '../../../log.js';
 
 export default function ArrowRightIcon(props) {
