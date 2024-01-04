@@ -24,3 +24,23 @@ else:
 finally:
     # Esto se ejecuta siempre al final de todo se ejecute o no
     print('La ejecucion continua')
+
+# Excepciones por tipo
+
+try:
+    print(numberOne+numberTwo)
+    print('Se ha ejecutado la suma')
+except ValueError:
+    print('se ha producido un ValueError')
+except TypeError:
+    print('se ha producido un TypeError')
+
+# Captura de la informacion de la excepcion
+
+try:
+    print(numberOne+numberTwo)
+    print('Se ha ejecutado la suma')
+except ValueError as error:
+    print(f'se produjo un error: {error}')
+except Exception as errorExeption:
+    print(errorExeption)
