@@ -81,12 +81,58 @@ imprimir los numeros primos entre 1 y 100
 """
 
 
-def prime_number(num):
+def prime_number(num:int)->int:
+    """
+    Si es numero primo imprimirlo
+    """
+    for i in range(2, num, 1):
+        if i % 2 == 0:
+            if i == 2:
+                print(i)
+            else:
+                pass
+        elif i % 3 == 0:
+            if i == 3:
+                print(i)
+            else:
+                pass
+        else:
+            print(i)
+    print('Final de lista')
+
+prime_number(20)
+
+def is_prime(number:int)->bool:
     """
     Determina si es primo, osea si se divide solo por si mismo y por 0
     """
-    for i in range(1, num, 1):
-        if num < 2:
+    if number < 2:
+        return False
+
+    for index in range(2,number):
+        if number % index == 0:
             return False
-        elif num % num:
-            print(num)
+
+    return True
+
+def prime_number_moure(number:int=0)->int:
+    for number in range(1,101):
+        if number >= 2:
+            is_divisible=False
+
+            for index in range(2,number):
+                if number%index==0:
+                    is_divisible=True
+                    break
+
+            if not is_divisible:
+                print(number)
+prime_number_moure()
+
+def reversed_text(text:str)->str:
+    reversed_chain=''
+    for letra in text:
+        reversed_chain=letra+reversed_chain
+    return reversed_chain
+
+print(reversed_text('hola como estas'))
