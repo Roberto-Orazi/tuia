@@ -10,9 +10,9 @@ class animal {
     }
 }
 
-let perro = new animal('perro', 2, 'atigrado')
-let gato = new animal('gato', 3, 'naranja')
-let tortuga = new animal('tortuga', 20, 'marron')
+const perro = new animal('perro', 2, 'atigrado')
+const gato = new animal('gato', 3, 'naranja')
+const tortuga = new animal('tortuga', 20, 'marron')
 console.log(perro)
 console.log(perro.color)
 console.log(perro.informacion)
