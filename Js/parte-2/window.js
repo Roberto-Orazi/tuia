@@ -1,4 +1,4 @@
-url='https://robertoorazi.com.ar'
+url = 'https://robertoorazi.com.ar'
 let ventanaAbierta = window.open() // Abre el link en una ventana
 let ventanaCerrada = window.close() // Cierra la ventana en caso de estar abierta
 let ventanaEstaCerrada = window.closed // Nos dice si esta cerrado
