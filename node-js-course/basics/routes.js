@@ -1,11 +1,8 @@
-const http = require('http')
 const fs = require('fs')
 
-
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
     const url = req.url
     const method = req.method
-
 
     if (url === '/') {
         res.write('<html>')
@@ -17,15 +14,18 @@ const server = http.createServer((req, res) => {
     if (url === '/message' && method === 'POST') {
         const body = []
         req.on('data', (chunk) => {
+            console.log(chunk)
             body.push(chunk)
         })
         req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString()
             const message = parsedBody.split('=')[1]
-            fs.writeFileSync('message.txt', message)
-            res.statusCode = 302
-            res.setHeader('Location', '/')
-            return res.end()
+            fs.writeFile('message.txt', message, (err) => {
+                console.log(err)
+                res.statusCode = 302
+                res.setHeader('Location', '/')
+                return res.end()
+            })
         })
     }
     res.setHeader('Content-Type', 'text/html')
@@ -34,6 +34,18 @@ const server = http.createServer((req, res) => {
     res.write('<body><h1>Hello from my nodejs</h1></body>')
     res.write('</html>')
     res.end()
-})
+}
 
-server.listen(3000)
+module.exports = {
+    handler: requestHandler,
+    someText: 'Some hard coded text'
+}
+
+/*
+OTRA FORMA DE EXPORTARLO ES HACERLO INDIVIDUALMENTE
+module.exports.handler = requestHandler
+module.exports.someText = 'Some hard coded text'
+
+exports.handler = requestHandler
+exports.someText = 'Some hard coded text'
+*/
