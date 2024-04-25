@@ -94,7 +94,6 @@ class ListaEnlazada:
 
         if i == 0:
             nuevo.prox = self.prim.prox
-            # DUDA SOBRE ESTO LE ASIGNO EL VALOR DE SELF.PRIM.PROX QUE SERIA EL PROXIMO AL SELF.PRIM
             self.prim=nuevo
 
         else:
