@@ -61,6 +61,7 @@ class Pila:
 
 class PilaConDecantar(Pila):
     def decantar(self):
+        print(self.items[-1])
         if self.size() < 2:
             print("No hay suficientes elementos para decantar.")
             return

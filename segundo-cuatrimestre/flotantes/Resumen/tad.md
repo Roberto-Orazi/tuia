@@ -93,7 +93,7 @@ class ListaEnlazada:
         nuevo = _Nodo(x)
 
         if i == 0:
-            nuevo.prox = self.prim.prox
+            nuevo.prox = self.prim
             self.prim=nuevo
 
         else:
