@@ -170,8 +170,54 @@ En pandas tenemos varios metodos para combinar df:
 ```python
 df1=pd.DataFrame({'A': [1,2,3], 'B': [4,5,6], index = [0,1,2]})
 
-df1=pd.DataFrame({'A': [4,5,6], 'B': [7,8,9], 'C': [10,11,12], index = [3,4,5]})
+df1=pd.DataFrame({'A': [4,5,6], 'B': [7,8,9], 'C': [10,11,12], index = [1,2,3]})
 
-nuevo_df = pd.concat([df1,df2], axis = 0)
+nuevo_df = pd.concat([df1,df2], axis = 0) # Por default es un outer join(union)
 
+nuevo_df = pd.concat([df1,df2], axis = 0, join='inner') # Cualquier cosa con el parametro join le damos el tipo de union que querramos
+
+
+nuevo_df = pd.concat([df1,df2], axis = 1) # Si seteamos axis=1 hacemos concatenacion horizontal
+nuevo_df = pd.concat([df1,df2], axis = 1, join='inner') # Si seteamos axis=1 con inner me deja los indices compartidos
+
+# Metodo merge()
+'''
+inner  es solo la interseccion
+outer es la union osea todo
+left seria el de la izquierda(df1) y interseccion
+right seria la interseccion y la de la derecha(df2)
+'''
+# Tenemos on y left_on, right_on que son para cuando usamos 2 columnas que comparten dato de distintos datasets
+'''
+tabla personas df1
+id_persona genero id_hogar
+3449        fem     450956
+3450        masc    450956
+3451        fem     450958
+
+tabla hogares df2
+id_hogar barrio
+450956   centro
+450957   belgrano
+450958   lourdes
+'''
+pd.merge(tabla_personas, tabla_hogares, on='id_hogar' how='inner')
+# Esto mostraria esta tabla:
+'''
+id_persona genero id_hogar  barrio
+3449        fem     450956  centro
+3450        masc    450956  centro
+3451        fem     450958  lourdes
+'''
+
+pd.merge(tabla_personas, tabla_hogares, on='id_hogar' how='outer')
+# Esto mostraria esta tabla:
+'''
+id_persona genero id_hogar  barrio
+3449        fem     450956  centro
+3450        masc    450956  centro
+Nan         Nan     450957  belgrano
+3451        fem     450958  lourdes
+'''
 ```
+
