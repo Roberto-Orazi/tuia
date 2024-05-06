@@ -130,3 +130,21 @@ name: actividad, dtype:float64
 '''
 ```
 
+## Boxplots
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.boxplot(x='peso_kg', data=df, showfliers = False) # Usamos el showfliers para mostrar o ocultar los outliers
+plt.show
+
+sns.boxplot(x='peso_kg', data=df, whis = [0,100]) # Usamos el whis para los bigotes/whiskers
+```
+
+## Tabla de frecuencias
+Puede construirse haciendo el value_counts() de pandas
+En la version mas simple:
+```python
+df['actividad'].value_counts()
+```
