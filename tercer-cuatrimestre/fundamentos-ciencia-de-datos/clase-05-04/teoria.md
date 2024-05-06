@@ -71,3 +71,62 @@ quantile(0.75)
 - Modo o Moda
 La moda es el valor de la variable que se presenta el mayor numero de veces osea la mayor frecuencia.
 mode() es el metodo de pandas
+
+```python
+df['peso_kg'].mode()
+```
+Imprime
+0 72.8
+Name: peso_kg, dtype: float64
+
+
+## Rango
+Es la diferencia entre el mayor y menor valor observado de la variable
+```python
+rango=round(df['peso_kg'].max() - df['peso_kg'].min(),1)
+```
+Seria el spread entre el menor y el mayor
+
+## Variancia(S²)
+Es una medida de cuanto se desvian en promedio. las observaciones de una variable con respecto a la media aritmetica.
+A mayor variabilidad mayor variancia obvioo
+```python
+variancia=round(df['peso_kg'].var(),1) # Esto nos va a devolver en nuestro caso kg²
+```
+
+## Desviacion estandar (S)
+Se define como la raiz cuadrada positiva de la variancia.
+Es como una distancia promedio de las observaciones con respecto a la media
+```python
+desviacion_est=round(df['peso_kg'].std(),1) # Esto al ser la raiz de la varianza va a devolver kg en este caso
+```
+## Metodo .describe()
+Dependiendo en que columna lo usamos imprime lo siguiente:
+
+```python
+df['peso_kg'].describe() # Esto es Cuantitativa
+'''
+count
+mean
+std
+min
+25%
+50%
+75%
+max
+name: peso_kg, dtype:float64
+'''
+```
+
+
+```python
+df['actividad'].describe() # Cualitativa
+'''
+count
+unique
+top
+freq
+name: actividad, dtype:float64
+'''
+```
+
