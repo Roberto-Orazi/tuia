@@ -148,3 +148,16 @@ En la version mas simple:
 ```python
 df['actividad'].value_counts()
 ```
+
+Tabla frecuencia absoluta y relativa mas linda
+```python
+# Tabla frecuencia absoluta
+tabla_actividad = df['actividad'].value_counts().reset_index()
+tabla_actividad.rename(columns = {'actividad': 'Actividad', 'count': 'Frec_absoluta'}, inplace=True)
+tabla_actividad = tabla_actividad.set_index('Actividad')
+
+# Tabla frecuencia relativa
+tabla_actividad['Frec_relativa'] = round(tabla_actividad['Frec_absoluta']/sum(tabla_actividad['Frec_absoluta']), 2)
+
+tabla_actividad['Porcentaje'] = round(tabla_actividad['Frec_absoluta']*100/sum(tabla_actividad['Frec_absoluta']), 2)
+```
