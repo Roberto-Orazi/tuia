@@ -32,6 +32,8 @@
 
 - Podemos tambien hacer algun tipo de analisis de carreras por pais/continente ay que hay varias carreras en italia, usa en el caso de paises y de continente en europa se corre en españa, italia, gran bretaña.
 
+porcentajes de clasificacion en la grilla si llego a q1(16-20) q2(11-15) q3(top 10)
+
 ## Graficos
 grafico barra de
 grafico torta de
@@ -46,6 +48,8 @@ El fastest lap es boleano por lo tanto habria que ver de hacer alguna funcion o 
 ## Preguntas
 
 Podemos preguntar cuales son los impactos negativos de que un piloto tenga muchos dnf o termine siempre muy ultimo
+
+preguntar que pilotos pueden quedar afuera al otro año segun sus resultados 
 
 mirar :
 https://www.data-to-viz.com/
