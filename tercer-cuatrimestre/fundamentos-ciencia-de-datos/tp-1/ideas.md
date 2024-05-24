@@ -30,7 +30,7 @@
 
 - distribucion de victorias por equipo
 
-- Podemos tambien hacer algun tipo de analisis de carreras por pais/continente ay que hay varias carreras en italia, usa en el caso de paises y de continente en europa se corre en españa, italia, gran bretaña.
+- Podemos tambien hacer algun tipo de analisis de carreras por pais/continente y que hay varias carreras en italia, usa en el caso de paises y de continente en europa se corre en españa, italia, gran bretaña.
 
 porcentajes de clasificacion en la grilla si llego a q1(16-20) q2(11-15) q3(top 10)
 

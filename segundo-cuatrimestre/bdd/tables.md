@@ -15,6 +15,10 @@ Cuentan con disponibilidad de espacio en pie o grada respectivamente
 1. Campo delantero
 2. Campo trasero
 
+Sistema de ventas
 ```
+Debe permitir a los clientes seleccionar la seccion deseada.
+Cada entrada tiene un precio asociado que varia segun la seccion
+
 
 ```
