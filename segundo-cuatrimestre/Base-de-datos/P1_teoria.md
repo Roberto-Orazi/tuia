@@ -108,7 +108,7 @@ Supongamos que en la tabla de cursos añadimos la información del departamento 
 # Dependencias Funcionales
 
 ## Dependencia Funcional
-Una dependencia funcional entre dos conjuntos de atributos en una relación de base de datos ocurre cuando el valor de uno de los atributos determina el valor de otro atributo. Si \( A \) y \( B \) son atributos de una relación, \( B \) es funcionalmente dependiente de \( A \) (escrito como \( A \to B \)) si, en cualquier instante de tiempo, cada valor de \( A \) está asociado con un solo valor de \( B \).
+Una dependencia funcional entre dos conjuntos de atributos en una relación de base de datos ocurre cuando el valor de uno de los atributos determina el valor de otro atributo. Si A y B son atributos de una relación, B es funcionalmente dependiente de A (escrito como A -> B) si, en cualquier instante de tiempo, cada valor de A está asociado con un solo valor de B.
 
 ### Ejemplo:
 | EstudianteID | Nombre     | Curso       | Profesor       |
@@ -118,7 +118,7 @@ Una dependencia funcional entre dos conjuntos de atributos en una relación de b
 | 2            | Ana Gómez  | Química     | Prof. Martínez |
 | 2            | Ana Gómez  | Biología    | Prof. Rodríguez|
 
-En esta tabla, la relación \( EstudianteID \to Nombre \) es una dependencia funcional porque cada \( EstudianteID \) único tiene asociado un único \( Nombre \).
+En esta tabla, la relación EstudianteID -> Nombre es una dependencia funcional porque cada EstudianteID único tiene asociado un único Nombre.
 
 ## Dependencia Funcional Total
 Una dependencia funcional es total si un atributo es funcionalmente dependiente de un conjunto de atributos completos. Es decir, un atributo depende de la totalidad de la clave primaria.
@@ -131,7 +131,7 @@ Una dependencia funcional es total si un atributo es funcionalmente dependiente 
 | 2            | Química     | Prof. Martínez |
 | 2            | Biología    | Prof. Rodríguez|
 
-Aquí, \( (EstudianteID, Curso) \to Profesor \) es una dependencia funcional total porque el valor de \( Profesor \) depende tanto de \( EstudianteID \) como de \( Curso \) juntos, es decir, de toda la clave primaria compuesta.
+Aquí, (EstudianteID, Curso) -> Profesor es una dependencia funcional total porque el valor de Profesor depende tanto de EstudianteID como de Curso juntos, es decir, de toda la clave primaria compuesta.
 
 ## Dependencia Funcional Parcial
 Una dependencia funcional es parcial si un atributo depende de una parte de la clave primaria, no de toda la clave primaria.
@@ -144,18 +144,18 @@ Una dependencia funcional es parcial si un atributo depende de una parte de la c
 | 2            | Química     | Ana Gómez   |
 | 2            | Biología    | Ana Gómez   |
 
-En esta tabla, \( EstudianteID \to Nombre \) es una dependencia funcional parcial porque \( Nombre \) depende solo de \( EstudianteID \) y no de la clave primaria completa \( (EstudianteID, Curso) \).
+En esta tabla, EstudianteID -> Nombre es una dependencia funcional parcial porque Nombre depende solo de EstudianteID y no de la clave primaria completa (EstudianteID, Curso).
 
 ## Diferencia entre Dependencia Funcional Total y Parcial
 
 - **Dependencia Funcional Total:** Ocurre cuando un atributo depende de toda la clave primaria.
-  - **Ejemplo:** \( (EstudianteID, Curso) \to Profesor \) en la tabla de cursos. Aquí, \( Profesor \) depende de ambas partes de la clave primaria compuesta (EstudianteID y Curso).
+  - **Ejemplo:** (EstudianteID, Curso) -> Profesor en la tabla de cursos. Aquí, Profesor depende de ambas partes de la clave primaria compuesta (EstudianteID y Curso).
 
 - **Dependencia Funcional Parcial:** Ocurre cuando un atributo depende solo de una parte de la clave primaria.
-  - **Ejemplo:** \( EstudianteID \to Nombre \) en la tabla de cursos. Aquí, \( Nombre \) depende solo de \( EstudianteID \), no de toda la clave primaria compuesta.
+  - **Ejemplo:** EstudianteID -> Nombre en la tabla de cursos. Aquí, Nombre depende solo de EstudianteID, no de toda la clave primaria compuesta.
 
 ## Dependencia Funcional Transitiva
-Una dependencia funcional es transitiva si un atributo \( A \) determina un atributo \( B \), y \( B \) determina un atributo \( C \), entonces \( A \) determina \( C \).
+Una dependencia funcional es transitiva si un atributo A determina un atributo B, y B determina un atributo C, entonces A determina C.
 
 ### Ejemplo:
 | EstudianteID | Curso       | Profesor       | Departamento      |
@@ -166,7 +166,7 @@ Una dependencia funcional es transitiva si un atributo \( A \) determina un atri
 | 2            | Biología    | Prof. Rodríguez| Ciencias Naturales|
 
 En esta tabla:
-- \( (EstudianteID, Curso) \to Profesor \)
-- \( Profesor \to Departamento \)
+- (EstudianteID, Curso) -> Profesor
+- Profesor -> Departamento
 
-Por lo tanto, \( (EstudianteID, Curso) \to Departamento \) es una dependencia funcional transitiva, porque el departamento depende de \( Profesor \), que a su vez depende de \( (EstudianteID, Curso) \).
+Por lo tanto, (EstudianteID, Curso) -> Departamento es una dependencia funcional transitiva, porque el departamento depende de Profesor, que a su vez depende de (EstudianteID, Curso).
