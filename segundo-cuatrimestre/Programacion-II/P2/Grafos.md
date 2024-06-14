@@ -54,7 +54,6 @@ vertice en V1 con uno en V2. Osea:
 
 
 
-
 ## Mas grafos
 
 ### Grafo conexo
