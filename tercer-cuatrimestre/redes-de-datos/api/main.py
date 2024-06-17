@@ -35,7 +35,6 @@ async def get_movies_by_year(year: int):
         df = pd.DataFrame(movies)
         df = df.replace({np.nan: None})
 
-        # Filter by year
         filtered_df = df[df['year'] == year]
         if filtered_df.empty:
             raise HTTPException(status_code=404, detail="No movies found for the given year")
