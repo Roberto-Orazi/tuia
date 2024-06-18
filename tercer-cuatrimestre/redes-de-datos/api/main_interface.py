@@ -24,20 +24,6 @@ class MovieApp(tk.Tk):
         self.filter_value = ttk.Entry(self)
         self.filter_value.pack(pady=10)
 
-        self.order_label = ttk.Label(self, text="Order by:")
-        self.order_label.pack(pady=10)
-
-        self.order_option = ttk.Combobox(self, values=["Year", "cast", "Genre"])
-        self.order_option.pack(pady=10)
-        self.order_option.set("Year")
-
-        self.direction_label = ttk.Label(self, text="Order direction:")
-        self.direction_label.pack(pady=10)
-
-        self.direction_option = ttk.Combobox(self, values=["Ascending", "Descending"])
-        self.direction_option.pack(pady=10)
-        self.direction_option.set("Ascending")
-
         self.filter_button = ttk.Button(self, text="Filter", command=self.filter_movies)
         self.filter_button.pack(pady=10)
 
@@ -50,11 +36,8 @@ class MovieApp(tk.Tk):
     def filter_movies(self):
         filter_type = self.filter_option.get().lower()
         filter_value = self.filter_value.get()
-        order_by = self.order_option.get().lower()
-        order_direction = self.direction_option.get().lower()
-        order_direction = 'asc' if order_direction == "ascending" else 'desc'
-        
-        endpoint = f'{BASE_URL}/movies/by-{filter_type}?{filter_type}={filter_value}&order_by={order_by}&direction={order_direction}'
+
+        endpoint = f'{BASE_URL}/movies/by-{filter_type}?{filter_type}={filter_value}'
 
         response = requests.get(endpoint)
         if response.status_code == 200:
