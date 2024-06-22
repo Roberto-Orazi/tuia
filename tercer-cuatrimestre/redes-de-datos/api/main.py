@@ -66,6 +66,8 @@ async def get_movies():
 async def get_movies_by_title(title: str):
     try:
         movies = load_movies_data()
+        if not isinstance(movies, list):
+            raise HTTPException(status_code=500, detail="Movies data is not in expected format")
         filtered_movies = [movie for movie in movies if title.lower() in movie['title'].lower()]
         if not filtered_movies:
             raise HTTPException(status_code=404, detail="No movies found for the given title")

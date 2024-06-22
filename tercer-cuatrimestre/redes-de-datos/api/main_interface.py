@@ -21,7 +21,7 @@ class MovieApp(tk.Tk):
 
         self.vsb.pack(side="right", fill="y")
         self.canvas.pack(side="left", fill="both", expand=True)
-        self.canvas.create_window((4,4), window=self.frame, anchor="nw", tags="self.frame")
+        self.canvas.create_window((4, 4), window=self.frame, anchor="nw", tags="self.frame")
 
         self.frame.bind("<Configure>", self.on_frame_configure)
 
@@ -44,13 +44,25 @@ class MovieApp(tk.Tk):
         self.view_all_button = ttk.Button(self.frame, text="View All Movies", command=self.view_all_movies)
         self.view_all_button.pack(pady=10)
 
-        self.title_entry = self.create_labeled_entry(self.frame, "Title:")
-        self.year_entry = self.create_labeled_entry(self.frame, "Year:")
-        self.cast_entry = self.create_labeled_entry(self.frame, "Cast (comma separated):")
-        self.genres_entry = self.create_labeled_entry(self.frame, "Genres (comma separated):")
+        self.create_title_entry = self.create_labeled_entry(self.frame, "Title:")
+        self.create_year_entry = self.create_labeled_entry(self.frame, "Year:")
+        self.create_cast_entry = self.create_labeled_entry(self.frame, "Cast (comma separated):")
+        self.create_genres_entry = self.create_labeled_entry(self.frame, "Genres (comma separated):")
 
         self.create_button = ttk.Button(self.frame, text="Add Movie", command=self.create_movie)
         self.create_button.pack(pady=10)
+
+        self.filter_label = ttk.Label(self.frame, text="Update movie")
+        self.filter_label.pack(pady=10)
+
+        self.edit_title_entry = self.create_labeled_entry(self.frame, "Title of the movie to edit:")
+        self.fetch_button = ttk.Button(self.frame, text="Search Movie", command=self.fetch_movie)
+        self.fetch_button.pack(pady=10)
+
+        self.new_title_entry = self.create_labeled_entry(self.frame, "Title:")
+        self.new_year_entry = self.create_labeled_entry(self.frame, "Year:")
+        self.new_cast_entry = self.create_labeled_entry(self.frame, "Cast (comma separated):")
+        self.new_genres_entry = self.create_labeled_entry(self.frame, "Genres (comma separated):")
 
         self.update_button = ttk.Button(self.frame, text="Update Movie", command=self.update_movie)
         self.update_button.pack(pady=10)
@@ -93,10 +105,10 @@ class MovieApp(tk.Tk):
             self.movies_listbox.insert(tk.END, f"{movie['title']} ({movie['year']}) - {movie['cast']} - {movie['genres']}")
 
     def create_movie(self):
-        title = self.title_entry.get()
-        year = self.year_entry.get()
-        cast = self.cast_entry.get().split(',')
-        genres = self.genres_entry.get().split(',')
+        title = self.create_title_entry.get()
+        year = self.create_year_entry.get()
+        cast = self.create_cast_entry.get().split(',')
+        genres = self.create_genres_entry.get().split(',')
 
         movie_data = {
             "title": title,
@@ -112,14 +124,31 @@ class MovieApp(tk.Tk):
         else:
             messagebox.showerror("Error", "Failed to add movie")
 
+    def fetch_movie(self):
+        title = self.edit_title_entry.get()
+        response = requests.get(f'{BASE_URL}/movies/by-title?title={title}')
+        if response.status_code == 200:
+            movie = response.json()[0]  # Tomar la primera coincidencia
+            self.new_title_entry.delete(0, tk.END)
+            self.new_title_entry.insert(0, movie['title'])
+            self.new_year_entry.delete(0, tk.END)
+            self.new_year_entry.insert(0, movie['year'])
+            self.new_cast_entry.delete(0, tk.END)
+            self.new_cast_entry.insert(0, ', '.join(movie['cast']))
+            self.new_genres_entry.delete(0, tk.END)
+            self.new_genres_entry.insert(0, ', '.join(movie['genres']))
+        else:
+            messagebox.showerror("Error", "Movie not found")
+
     def update_movie(self):
-        title = self.title_entry.get()
-        year = self.year_entry.get()
-        cast = self.cast_entry.get().split(',')
-        genres = self.genres_entry.get().split(',')
+        title = self.edit_title_entry.get()
+        new_title = self.new_title_entry.get()
+        year = self.new_year_entry.get()
+        cast = self.new_cast_entry.get().split(',')
+        genres = self.new_genres_entry.get().split(',')
 
         movie_data = {
-            "title": title,
+            "title": new_title,
             "year": int(year),
             "cast": [actor.strip() for actor in cast],
             "genres": [genre.strip() for genre in genres]
