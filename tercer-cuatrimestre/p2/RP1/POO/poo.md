@@ -33,3 +33,13 @@ Son particulares de cada Objeto(INSTANCIA) creado con esa clase
 ```
 Los metodos son las funciones que creamos en la clase pero ya relacionada a un objeto en especifico. Por ejemplo si tenemos una clase perro y tenemos la funcion ladrar, cuando le asignemos a un objeto la funcion ladrar, hacemos que ese objeto perro tenga un metodo ladrar. Capas que otro perro no lo tiene.
 ```
+
+
+
+# Como esta formado poo
+Que es un objeto?
+Que es una clase?
+Que son los atributos?
+que es una instancia?
+que es un metodo?
+Metodo Vs funcion
