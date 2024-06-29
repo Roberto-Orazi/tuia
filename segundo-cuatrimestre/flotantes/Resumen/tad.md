@@ -265,7 +265,7 @@ class ColaMejorada:
         node = Node(valor)
         node.next = None
         if self.length == 0:
-            self.head = self.last = node # ??????
+            self.head = self.last = node
 
         else:
             last = self.last
@@ -294,8 +294,6 @@ Metodos:
 - insert agrega elemento a la cola(ultimo)
 - remove elmina y devuelve el elemento de la cola(el que tiene mayor prioridad)
 - isEmpty comprueba si la cola esta vacia
-
-
 ```
 class ColaPrioridad:
     def __init__(self)->None:
@@ -318,6 +316,4 @@ class ColaPrioridad:
         return item
 
         return self.items.pop(0)
-
-
 ```

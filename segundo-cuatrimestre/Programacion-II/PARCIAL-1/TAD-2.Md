@@ -31,6 +31,7 @@ class Pila:
     def isEmpty(self):
         return (self.items == [])
 ```
+
 # TAD Cola
 Metodos:
 - init

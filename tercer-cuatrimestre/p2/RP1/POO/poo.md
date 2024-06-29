@@ -37,9 +37,21 @@ Los metodos son las funciones que creamos en la clase pero ya relacionada a un o
 
 
 # Como esta formado poo
-Que es un objeto?
 Que es una clase?
-Que son los atributos?
+Es un molde que nos dice cómo va a ser un objeto, con sus características (atributos) y lo que puede hacer (métodos).
+
+Que es un objeto?
+Es un ejemplo concreto de una clase. Por ejemplo, si la clase es "Perro", un objeto podría ser "mi perro Fido".
+
 que es una instancia?
+Es simplemente otro nombre para un objeto. Es un "ejemplar" de una clase
+
+Que son los atributos?
+Son las características o datos que tiene un objeto. Por ejemplo, un perro (objeto) puede tener atributos como "color", "tamaño", "raza".
+
 que es un metodo?
+En pocas palabras es una funcion. Solo que como esta adentro de la clase se llama metodo.
+Es algo que el objeto puede hacer. Por ejemplo, un perro puede tener métodos como "ladrar", "correr".
+
 Metodo Vs funcion
+Un método es una función que está dentro de un objeto (pertenece a una clase). Una función es un bloque de código que hace algo, pero no necesariamente está dentro de un objeto.
