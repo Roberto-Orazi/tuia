@@ -35,7 +35,6 @@ Los metodos son las funciones que creamos en la clase pero ya relacionada a un o
 ```
 
 
-
 # Como esta formado poo
 Que es una clase?
 Es un molde que nos dice cómo va a ser un objeto, con sus características (atributos) y lo que puede hacer (métodos).
