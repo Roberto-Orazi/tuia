@@ -91,7 +91,7 @@ class ListaEnlazada:
             print('Posicion invalida')
             return
 
-        nuevo=_Nodo(X)
+        nuevo= Nodo(x)
         if i == 0:
             nuevo.prox=self.prim
             self.prim=nuevo

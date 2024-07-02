@@ -20,12 +20,18 @@ def agregar_nodo(nodo_nuevo, arbol):
             return arbol
 
 def crear_arbol(lista_nodos):
-    Arbol = None
+    arbol = None
     while(lista_nodos!=[]):
         cargo=lista_nodos.pop()
-        Arbol=agregar_nodo(cargo, Arbol)
-    return Arbol
+        arbol=agregar_nodo(cargo, arbol)
+    return arbol
 
+def crear_arbol_recursivo(lista_nodos, arbol=None):
+    if lista_nodos == []:
+        return arbol
+    arbol=agregar_nodo(cargo,arbol)
+    cargo=crear_arbol(lista_nodos[1:])
+    
 def buscar(dato, arbol):
     if arbol == None:
         return False

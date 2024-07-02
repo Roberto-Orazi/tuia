@@ -38,16 +38,13 @@ Los metodos son las funciones que creamos en la clase pero ya relacionada a un o
 # Como esta formado poo
 Que es una clase?
 Es un molde que nos dice cómo va a ser un objeto, con sus características (atributos) y lo que puede hacer (métodos).
-Ademas de que esta 
+Ademas de que esta es una abstraccion del objeto
 
 Que es un objeto?
 Es un ejemplo concreto de una clase. Por ejemplo, si la clase es "Perro", un objeto podría ser "mi perro Fido".
 Estado(lista de atributos que los componen)
 Comportamiento(funcionalidades a traves de sus metodos)
 identidad(por el id del objeto)
-
-
-La clase es una abstraccion del objeto
 
 Que son los atributos?
 Son las características o datos que tiene un objeto. Por ejemplo, un perro (objeto) puede tener atributos como "color", "tamaño", "raza".
