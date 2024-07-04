@@ -28,7 +28,7 @@ class MovieApp(tk.Tk):
         self.filter_label = ttk.Label(self.frame, text="Filter by:")
         self.filter_label.pack(pady=10)
 
-        self.filter_option = ttk.Combobox(self.frame, values=["Title", "Year", "cast", "Genre"])
+        self.filter_option = ttk.Combobox(self.frame, values=["Title", "Year", "Cast", "Genre"])
         self.filter_option.pack(pady=10)
         self.filter_option.set("Title")
 

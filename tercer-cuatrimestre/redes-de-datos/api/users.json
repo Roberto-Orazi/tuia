@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "username": "superadmin",
+            "password": "superadminpassword",
+            "role": "admin"
+        },
+        {
+            "username": "user",
+            "password": "userpassword",
+            "role": "viewer"
+        }
+    ]
+}
