@@ -4,7 +4,7 @@ import requests
 import json
 from requests.auth import HTTPBasicAuth
 
-BASE_URL = 'http://127.0.0.1:8000'
+BASE_URL = 'http://172.0.0.1:8000'
 
 class MovieApp(tk.Tk):
     def __init__(self):
@@ -218,7 +218,7 @@ class MovieApp(tk.Tk):
         else:
             messagebox.showerror("Error", "Failed to delete movie")
 
-    def on_frame_configure(self):
+    def on_frame_configure(self, event=None):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
 if __name__ == "__main__":

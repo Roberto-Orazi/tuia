@@ -3,12 +3,12 @@
 Como hacemos para correr el cliente y el servidor?
 Cliente:
 ```bash
-python main_interface.py
+python front.py
 ```
 
 Servidor:
 ```bash
-uvicorn main:app --reload
+uvicorn back:app --reload --host 0.0.0.0 --port 8000
 ```
 
 
@@ -17,7 +17,8 @@ Creamos un entorno virtual:
 ```bash
 python3 -m venv myenv
 source myenv/bin/activate # lo activamos
-pip install tkinter requests fastapi httpx pydantic # instalamos las librerias que vamos a usar
+pip install requests fastapi httpx pydantic # instalamos las librerias que vamos a usar
+sudo apt-get install python3-tk # Tkinter lo instalamos asi porque no se puede instalar mediante pip
 ```
 
 Para verificar las versiones usamos vamos a usar:
