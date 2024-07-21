@@ -14,21 +14,26 @@ security = HTTPBasic()
 
 USERS_FILE = Path("users.json")
 
-
-# Load users from JSON file
 def load_users() -> List[Dict]:
+    '''
+    This function loads the users from the json
+    '''
     with open(USERS_FILE, "r") as file:
         data = json.load(file)
     return data["users"]
 
-# Get user by username
 def get_user(username: str) -> Dict:
+    '''
+    Get user by username
+    '''
     users = load_users()
     user = next((user for user in users if user["username"] == username), None)
     return user
 
-# Authenticate user
 def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)):
+    '''
+    authenticate users
+    '''
     user = get_user(credentials.username)
     if user and user["password"] == credentials.password:
         return user
@@ -38,8 +43,10 @@ def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)):
         headers={"WWW-Authenticate": "Basic"},
     )
 
-# Dependency to check if the user is an admin
 def admin_required(user: Dict = Depends(authenticate_user)):
+    '''
+    permision for admin roles for create, edit, delete
+    '''
     if user["role"] != "admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -49,6 +56,9 @@ def admin_required(user: Dict = Depends(authenticate_user)):
 
 # Dependency to check if the user is a viewer
 def viewer_required(user: Dict = Depends(authenticate_user)):
+    '''
+    permision for viewer & admin roles for get method
+    '''
     if user["role"] not in ["viewer", "admin"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -57,7 +67,6 @@ def viewer_required(user: Dict = Depends(authenticate_user)):
     return user
 
 
-# The types of the data
 class Movie(BaseModel):
     title: str
     year: int

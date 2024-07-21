@@ -1,19 +1,6 @@
 # Movie App
 
-Como hacemos para correr el cliente y el servidor?
-Cliente:
-```bash
-python front.py
-```
-
-Servidor:
-```bash
-uvicorn back:app --reload --host 0.0.0.0 --port 8000
-```
-
-
-
-Creamos un entorno virtual:
+## Creamos un entorno virtual:
 ```bash
 python3 -m venv myenv
 source myenv/bin/activate # lo activamos
@@ -21,7 +8,7 @@ pip install requests fastapi httpx pydantic # instalamos las librerias que vamos
 sudo apt-get install python3-tk # Tkinter lo instalamos asi porque no se puede instalar mediante pip
 ```
 
-Para verificar las versiones usamos vamos a usar:
+## Para verificar las versiones usamos vamos a usar:
 ```bash
 pip list
 # Y nos va a devolver esto:
@@ -92,3 +79,16 @@ watchfiles         0.22.0
 wcwidth            0.2.13
 websockets         12.0
 ```
+
+## Como hacemos para correr el cliente y el servidor?
+Cliente:
+```bash
+python front.py
+```
+
+## Servidor:
+Tenemos que recordar de cambiarle el ip de nuestro codigo de la parte cliente con el ip de la computadora del servidor
+```bash
+uvicorn back:app --reload --host 0.0.0.0 --port 8000
+```
+
