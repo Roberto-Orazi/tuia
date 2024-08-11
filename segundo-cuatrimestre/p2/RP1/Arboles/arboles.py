@@ -31,7 +31,7 @@ def crear_arbol_recursivo(lista_nodos, arbol=None):
         return arbol
     arbol=agregar_nodo(cargo,arbol)
     cargo=crear_arbol(lista_nodos[1:])
-    
+
 def buscar(dato, arbol):
     if arbol == None:
         return False
