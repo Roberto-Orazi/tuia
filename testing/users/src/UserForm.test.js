@@ -30,7 +30,7 @@ test('it calls onUserAdd when the form is submited', async () => {
     const emailInput = screen.getByRole('textbox', {
         name: /email/i
     })
-    
+
     // Simulate typing a name
     await user.click(nameInput)
     await user.keyboard('test')
