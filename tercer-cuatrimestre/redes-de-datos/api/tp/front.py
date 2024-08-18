@@ -12,7 +12,7 @@ class MovieApp(tk.Tk):
 
         self.title("Movie Filter App")
         self.geometry("665x700")
-        self.user_data = None  # Para almacenar los datos del usuario logueado
+        self.user_data = None
 
         self.show_login_screen()
 
@@ -36,23 +36,26 @@ class MovieApp(tk.Tk):
 
         with open("users.json") as f:
             users = json.load(f)
-            print("Loaded users:", users)  # Debug print
+            print("Loaded users:", users)
 
-        for user in users["users"]:  # Acceder a la lista de usuarios dentro del JSON
+        for user in users["users"]:
             if user["username"] == username and user["password"] == password:
                 self.user_data = user
                 self.auth = HTTPBasicAuth(username, password)
-                print("Authenticated user:", self.user_data)  # Debug print
+                print("Authenticated user:", self.user_data)
                 self.login_frame.destroy()
                 self.create_widgets()
                 return
 
         messagebox.showerror("Error", "Invalid username or password")
+
     def logout(self):
-        # Limpiar la información del usuario y volver a la pantalla de login
-        self.user_data = None  # Limpiar la información de usuario
-        self.destroy()  # Cerrar la ventana principal
-        self.__init__()  # Mostrar de nuevo la pantalla de login
+        '''
+            We use this method to clean the user data, close the app & then we start the login screen again
+        '''
+        self.user_data = None 
+        self.destroy() 
+        self.__init__()
 
     def create_widgets(self):
         self.canvas = tk.Canvas(self, borderwidth=0)
@@ -175,7 +178,7 @@ class MovieApp(tk.Tk):
         title = self.edit_title_entry.get()
         response = requests.get(f'{BASE_URL}/movies/by-title?title={title}', auth=self.auth)
         if response.status_code == 200:
-            movie = response.json()[0]  # Tomar la primera coincidencia
+            movie = response.json()[0]
             self.new_title_entry.delete(0, tk.END)
             self.new_title_entry.insert(0, movie['title'])
             self.new_year_entry.delete(0, tk.END)
