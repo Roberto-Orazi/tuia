@@ -73,5 +73,23 @@ La regresion se utiliza para predecir un valor numerico continuo.
 - visualizacion de datos
 - calidad de los datos
 
+## Pipeline de tareas sobre el conjunto de entrenamiento
+1. Conjunto de entrenamiento
+2. Definir metricas de evaluacion
+3. Calculo de metricas para el modelo base
+4. Entrenar un modelo
+5. Computar metricas de validacion
+6. optimizacion de hiperpametros -> punto 4
+7. Evaluar metricas en el conjunto de prueba
 
 
+## Algoritmos ML
+### Funcion de perdida
+- Funcion para minimizar, a menor valor, mejora la performance
+- Se elige la funcion del problema:
+ - Regresion MSE
+ - Clasificacion BCE
+
+### Optimizador
+- Algoritmo que efectua la optimizacion de la funcion de perdida
+- ejemplo: Gradiente desenciente(Iteraciones)
