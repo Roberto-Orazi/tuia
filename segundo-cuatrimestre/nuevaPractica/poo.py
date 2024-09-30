@@ -126,6 +126,84 @@ while orden != "FIN":
 print("Fin del programa")
 
 
-class RobotMejorado(Robot):
-    def __init__(self, movimientos: str = ""):
+class RobotMejorado:
+    def __init__(
+        self,
+        movimientos: str = "",
+        historico: list[str] = [],
+        x: float = 0,
+        y: float = 0,
+    ):
+        self.x = x
+        self.y = y
         self.movimientos = movimientos
+        self.historico = historico
+
+    def mueve_varios(self, movimientos: str) -> None:
+        movimientos_validos = "ARDI"
+        if movimientos == "":
+            return
+        for i in movimientos:
+            if i.capitalize() not in movimientos_validos:
+                print("Hay una orden invalida")
+                return
+        for i in movimientos:
+            if i.capitalize() == "A":
+                self.y += 1
+                self.historico.append(i)
+            elif i.capitalize() == "R":
+                self.y -= 1
+                self.historico.append(i)
+            elif i.capitalize() == "D":
+                self.x += 1
+                self.historico.append(i)
+            elif i.capitalize() == "I":
+                self.x -= 1
+                self.historico.append(i)
+            else:
+                "Orden invalida"  # Esto esta demas ya uqe hago la verificacion antes
+
+    def obtener_historico_de_movimientos(self) -> list[str]:
+        return self.historico
+
+    def como_volver(self) -> None:
+        for i in self.historico:
+            if i.capitalize() == "A":
+                self.y -= 1
+            elif i.capitalize() == "R":
+                self.y += 1
+            elif i.capitalize() == "D":
+                self.x -= 1
+            elif i.capitalize() == "I":
+                self.x += 1
+
+
+robot = RobotMejorado()
+robot.mueve_varios("AADDIRR")
+print("Posición actual:", robot.x, robot.y)
+print("Histórico de movimientos:", robot.obtener_historico_de_movimientos())
+robot.mueve_varios("AAZX")
+print("Posición actual después de secuencia inválida:", robot.x, robot.y)
+robot.como_volver()
+print("Posición después de volver al punto de origen:", robot.x, robot.y)
+
+
+class Materia:
+    def __init__(self, codigo: float, nombre: str, creditos: int) -> None:
+        self.codigo = codigo
+        self.nombre = nombre
+        self.creditos = creditos
+
+
+class Carrera:
+    def __init__(self, materias: list["Materia"] = []) -> None:
+        self.materias = materias
+
+    def __str__(self) -> str:
+        return str(self.materias)
+
+
+analisis2 = Materia("61.03", "Análisis 2", 8)
+fisica2 = Materia("62.01", "Física 2", 8)
+algo1 = Materia("75.40", "Algoritmos 1", 6)
+c = Carrera([analisis2, fisica2, algo1])
