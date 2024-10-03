@@ -1,3 +1,7 @@
 /node_modules
 
+/python
+
+.venv
+
 /cuarto-cuatrimestre/Procesamiento-de-imagenes/procesamiento-imagenes
