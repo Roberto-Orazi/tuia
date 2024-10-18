@@ -1,0 +1,24 @@
+numpy
+
+matplotlib
+
+opencv-contrib-python
+
+Pillow
+
+'''
+
+Recordar crear el entorno virtual:
+
+python3 -m venv tp-pdi
+
+Comando para correr este archivo:
+
+pip install -r requirements.txt
+
+Nota: Para usar tkinter, instala el paquete python3-tk con el siguiente comando:
+
+sudo apt-get install python3-tk
+
+'''
+
