@@ -1,33 +1,65 @@
 import yfinance as yf
 import pandas as pd
 
-# Lista de tickers de acciones argentinas
-tickers = ["YPF", "PAM", "BMA", "BBAR", "GGAL", "CEPU"]
+final_df = pd.DataFrame()
 
-# Crear DataFrame vacío
-df = pd.DataFrame()
+# Lista de tickers
+bank_tickers = [
+    "HSBC",  # HSBC Holdings plc (Reino Unido)
+    "BBVA",  # Banco Bilbao Vizcaya Argentaria, S.A. (España)
+    "SAN",  # Banco Santander, S.A. (España)
+    "BNS",  # Bank of Nova Scotia (Canadá)
+    "TD",  # Toronto-Dominion Bank (Canadá)
+    "DB",  # Deutsche Bank AG (Alemania)
+    "UBS",  # UBS Group AG (Suiza)
+    "ITUB",  # Itaú Unibanco Holding S.A. (Brasil)
+    "BBAS3.SA",  # Banco do Brasil S.A. (Brasil)
+    "WBC.AX",  # Westpac Banking Corporation (Australia)
+    "ANZ.AX",  # Australia and New Zealand Banking Group Limited (Australia)
+    "ICICIBANK.NS",  # ICICI Bank Limited (India)
+    "HDFCBANK.NS",  # HDFC Bank Limited (India)
+    "KB",  # KB Financial Group Inc. (Corea del Sur)
+    "SMFG",  # Sumitomo Mitsui Financial Group, Inc. (Japón)
+    "GGAL",  # Grupo Financiero Galicia S.A. (Argentina)
+]
 
-# Descargar los datos de cada ticker
-for ticker in tickers:
-    data = yf.download(ticker, start="2020-01-01", end="2024-10-01")
 
-    # Añadir columna con el nombre del ticker
-    data["Ticker"] = ticker
+for ticker in bank_tickers:
+    # Descargar datos del ticker
+    stock = yf.Ticker(ticker)
 
-    # Calcular la variación diaria del precio
-    data["Price Variation"] = data["Adj Close"].pct_change()
+    historic = stock.history(period="1y")
 
-    # Añadir columna con el sector (esto es manual, depende de los datos que encuentres)
-    data["Sector"] = "Sector correspondiente"  # Ej. "Energía", "Finanzas"
+    if not historic.empty:
+        # Obtener información adicional
+        information = stock.info
 
-    # Añadir columna con país
-    data["País"] = "Argentina"
+        temp_df = pd.DataFrame(
+            {
+                "Date": historic.index,  # Variable Temporal
+                "Ticker": [ticker] * len(historic),  # Variable Categórica
+                "Open": historic["Open"],  # Variable Numérica Continua
+                "High": historic["High"],  # Variable Numérica Continua
+                "Low": historic["Low"],  # Variable Numérica Continua
+                "Close": historic["Close"],  # Variable Numérica Continua
+                "Volume": historic["Volume"],  # Variable Numérica Discreta
+                "Market Cap": [information.get("marketCap", None)]
+                * len(historic),  # Variable Numérica Discreta
+                "Sector": [information.get("sector", "N/A")]
+                * len(historic),  # Variable Categórica
+                "City": [information.get("city", "N/A")]
+                * len(historic),  # Variable Categórica/geografica
+                "Country": [information.get("country", "N/A")]
+                * len(historic),  # Variable Categórica/geografica
+            }
+        )
 
-    # Concatenar los datos al DataFrame principal
-    df = pd.concat([df, data])
+        final_df = pd.concat([final_df, temp_df], axis=0)
 
-# Limpiar datos faltantes
-df.dropna(inplace=True)
+print(final_df.head())
 
-# Guardar el dataset transformado
-df.to_csv("acciones_argentinas.csv", index=True)
+if not final_df.empty:
+    final_df.to_csv("bank_tickers_data.csv", index=False)
+    print("Data save in 'bank_tickers_data.csv'")
+else:
+    print("No data available to save")
