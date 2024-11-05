@@ -5,3 +5,16 @@ matplotlib
 opencv-contrib-python
 
 Pillow
+
+scikit-learn
+
+tensorflow
+
+pandas
+
+optuna
+
+keras
+
+opencv-python
+
