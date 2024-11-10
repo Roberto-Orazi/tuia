@@ -1,8 +1,8 @@
 """
-Remoción de borrosidad por movimiento
-Uso:
+Remoción de borrosidad por movimiento Uso:
   python3 PDI_U4_Restauracion_p4_Filtrado_Inverso.py  --img <source_image>
 """
+
 import argparse
 import sys
 import cv2
@@ -15,18 +15,16 @@ def motion_blur_kernel(length, rotation):
 
     Parametros
     ----------
-        length : int      --> La longitud del filtro
-        rotation : float  --> El ángulo del desplazamiento, en grados.
+        length : int      --> La longitud del filtro rotation : float  --> El ángulo del desplazamiento, en grados.
     """
     # --- Genero kernel horizontal -----------------------------------
     kernel_motion_blur = np.zeros((length, length))
-    kernel_motion_blur[int((length-1)/2), :] = np.ones(length)
+    kernel_motion_blur[int((length - 1) / 2), :] = np.ones(length)
     kernel_motion_blur = kernel_motion_blur / length
 
-    # --- Roto el kernel de acuerdo al ángulo ------------------------
-    # Aplior una rotación afín.
-    # La función cv2.getRotationMatrix2D genera una matriz de rotación dado un pivot y un ángulo.
-    M = cv2.getRotationMatrix2D(((length-1)/2, (length-1)/2), rotation, 1)
+    # --- Roto el kernel de acuerdo al ángulo ------------------------ Aplior una rotación afín. La función
+    # cv2.getRotationMatrix2D genera una matriz de rotación dado un pivot y un ángulo.
+    M = cv2.getRotationMatrix2D(((length - 1) / 2, (length - 1) / 2), rotation, 1)
 
     # La funcion cv2.warpAffine aplica una transformación afín dada una matriz de transformación:
     return cv2.warpAffine(kernel_motion_blur, M, kernel_motion_blur.shape)
@@ -34,12 +32,12 @@ def motion_blur_kernel(length, rotation):
 
 def weiner_deconvolution(img, psf, snr):
     """
-    Aplica una deconvolución Wiener dada la imagen degradada, 
-    el kernel o PSF que modela la distorción (Point Spread Function) y  un valor de SNR.
+    Aplica una deconvolución Wiener dada la imagen degradada, el kernel o PSF que modela la distorción (Point Spread
+    Function) y  un valor de SNR.
 
-    Entradas 
+    Entradas
     ----------
-        img : numpy.ndarray   
+        img : numpy.ndarray
             La imagen degradada
         psf : numpy.ndarray
             Kernel o PSF (Point Spread Function) que modela la degradación convolucional.
@@ -49,10 +47,8 @@ def weiner_deconvolution(img, psf, snr):
     -------
             La imagen restaurada : numpy.ndarray
     """
-    # --- Debug ------
-    # print("### PSF ###########################################")
-    # print(psf)
-    
+    # --- Debug ------ print("### PSF ###########################################") print(psf)
+
     # NSR: relación noise/signal (el inverso del SNR), en escala lineal.
     NSR = 10.0 ** (-0.1 * snr)
 
@@ -64,16 +60,16 @@ def weiner_deconvolution(img, psf, snr):
     # Deconvolución Wiener en el dominio frecuencial.
     IMG = np.fft.fft2(img)
     PSF = np.fft.fft2(psf_pad)
-    RES = IMG * (PSF / (np.abs(PSF)**2 + NSR))
+    RES = IMG * (PSF / (np.abs(PSF) ** 2 + NSR))
 
     # Transformada inversa.
     deconvolved = np.fft.ifft2(RES)
 
-    # Dado que el elemento central del kernel está ubicado en (kw/2,kh/2) y no(0,0),
-    # la imagen resultante sufre una traslación de (kw/2,kh/2).
-    # Esto se resuelve aplicando un roll (desplazamiento estilo buffer circular) en (-kw/2,-kh/2).
-    deconvolved = np.roll(deconvolved, -kh//2, 0)
-    deconvolved = np.roll(deconvolved, -kw//2, 1)
+    # Dado que el elemento central del kernel está ubicado en (kw/2,kh/2) y no(0,0), la imagen resultante sufre una
+    # traslación de (kw/2,kh/2). Esto se resuelve aplicando un roll (desplazamiento estilo buffer circular) en
+    # (-kw/2,-kh/2).
+    deconvolved = np.roll(deconvolved, -kh // 2, 0)
+    deconvolved = np.roll(deconvolved, -kw // 2, 1)
     return deconvolved
 
 
@@ -86,9 +82,8 @@ def update(_):
     snr = cv2.getTrackbarPos("SNR (db)", "Filtrado Inverso")
     length = cv2.getTrackbarPos("Longitud", "Filtrado Inverso")
 
-    # --- Proceso parámetros ---------------------------------------------
-    # OpenCV no permite setear un mínimo para las trackbars, 
-    # los valores no válidos se deben manejar explícitamente.
+    # --- Proceso parámetros --------------------------------------------- OpenCV no permite setear un mínimo para las
+    # trackbars, los valores no válidos se deben manejar explícitamente.
     if length <= 0:
         print(str(length) + " no es una longitud válida para el kernel, usando 1")
         length = 1
@@ -106,10 +101,9 @@ def update(_):
     cv2.imshow("Filtrado Inverso", restored_img)
 
 
-
 # --- Proceso argumentos de entrada --------------------------------------------
 parser = argparse.ArgumentParser()
-parser.add_argument('--img', required=True)
+parser.add_argument("--img", required=True)
 args = parser.parse_args()
 src_path = args.img
 
@@ -119,7 +113,7 @@ if source_img is None:
     print("Error al cargar la imagen:", src_path)
     sys.exit(1)
 
-source_img = np.float32(source_img)/255.0   # Paso a float.
+source_img = np.float32(source_img) / 255.0  # Paso a float.
 cv2.imshow("Imagen Original", source_img)
 
 # ---  GUI ---------------------------------------------------------------------

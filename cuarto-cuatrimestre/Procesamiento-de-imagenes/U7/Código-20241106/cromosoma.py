@@ -15,7 +15,7 @@ def imshow(img, new_fig=True, title=None, color_img=False, blocking=False, color
         plt.xticks([]), plt.yticks([])
     if colorbar:
         plt.colorbar()
-    if new_fig:        
+    if new_fig:
         plt.show(block=blocking)
 
 # -------------------------------------------------------------------------------------------------------------
@@ -53,8 +53,7 @@ def imthin(image, n_iter=None):
 
     Parametros
     ----------
-    image   : Imagen binaria (M,N) ndarray, valores permitidos: 0 y 1.
-    n_iter  : int, numero de iteraciones (opcional).
+    image   : Imagen binaria (M,N) ndarray, valores permitidos: 0 y 1. n_iter  : int, numero de iteraciones (opcional).
 
     Salida
     ------
@@ -62,8 +61,9 @@ def imthin(image, n_iter=None):
 
     Referencias
     ----------
-    [1] Z. Guo and R. W. Hall, "Parallel thinning with two-subiteration algorithms," Comm. ACM, vol. 32, no. 3, pp. 359-373, 1989.
-    [2] Lam, L., Seong-Whan Lee, and Ching Y. Suen, "Thinning Methodologies-A Comprehensive Survey," IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol 14, No. 9, 1992, p. 879
+    [1] Z. Guo and R. W. Hall, "Parallel thinning with two-subiteration algorithms," Comm. ACM, vol. 32, no. 3, pp.
+    359-373, 1989. [2] Lam, L., Seong-Whan Lee, and Ching Y. Suen, "Thinning Methodologies-A Comprehensive Survey," IEEE
+    Transactions on Pattern Analysis and Machine Intelligence, Vol 14, No. 9, 1992, p. 879
     """
     # --- Check n_iter -----------------------------------------
     if n_iter is None:
@@ -72,7 +72,7 @@ def imthin(image, n_iter=None):
         raise ValueError('n_iter must be > 0')
     else:
         n = n_iter
-    
+
     # --- Check image ------------------------------------------
     skel = np.array(image).astype(np.uint8)
     if skel.ndim != 2:
@@ -90,15 +90,15 @@ def imthin(image, n_iter=None):
         before = np.sum(skel)                                                   # Cuento la cantidad de pixels True antes de esta iteración...
         # ----------------------------------
         for lut in [G123_LUT, G123P_LUT]:                                       # sub-itero para cada LUT
-            N = cv2.filter2D(skel, -1, mask, borderType=cv2.BORDER_CONSTANT)    # Correlación entre la imagen y la máscara 
+            N = cv2.filter2D(skel, -1, mask, borderType=cv2.BORDER_CONSTANT)    # Correlación entre la imagen y la máscara
             D = np.take(lut, N)                                                 # Decido que pixels eliminar en base al resultado de la correlación y la LUT.
-            skel[D] = 0                                                         # Elimino pixels (adelgazo)            
+            skel[D] = 0                                                         # Elimino pixels (adelgazo)
         # ----------------------------------
         after = np.sum(skel)                                                    # Cuento la cantidad de pixels True al final de esta iteración.
         if before == after:                                                     # Si no hay cambios, no itero mas, termine el adelgazamiento...
-            break   
+            break
         n -= 1                                                                  # Caso contrario, decremento n
-    return skel.astype(np.bool_)                                                
+    return skel.astype(np.bool_)
 # -------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------
@@ -119,8 +119,7 @@ th
 imshow(img_bin, title="Imagen umbralada")
 
 # # ---- Suavizado -----------------------------------------
-# st = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (60,60))
-# img_bin = cv2.morphologyEx(img_bin, cv2.MORPH_OPEN, st)
+# st = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (60,60)) img_bin = cv2.morphologyEx(img_bin, cv2.MORPH_OPEN, st)
 # imshow(img_bin, title="Imagen umbralada")
 
 # --- Contorno Exterior ----------------------------------
@@ -164,7 +163,7 @@ def endpoints(f):
     f8 = cv2.morphologyEx(f, cv2.MORPH_HITMISS, B8)
 
     fend = f1 | f2 | f3 | f4 | f5 | f6 | f7 | f8
-    
+
     return fend
 
 f_endpoints = endpoints(f)
