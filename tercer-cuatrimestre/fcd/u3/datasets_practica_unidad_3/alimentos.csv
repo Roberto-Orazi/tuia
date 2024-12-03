@@ -1,0 +1,100 @@
+alimento;aporte_calorico_kcal;tipo_de_alimento;vitamina
+ banana;81;fruta;A
+ kiwi;36;fruta;B
+ higo;62;fruta;B
+ repollo;22;verdura;A
+ col;12;verdura;A
+ guisantes;17;verdura;C
+ hamburguesa;954;elaborada;A
+ kaki;63;fruta;A
+ pasas;0;fruto seco;B
+ pan de ajo;73;elaborada;A
+ naranja;38;fruta;A
+ mora;81;fruta;C
+ huevo;46;animal;C
+ pizza;591;elaborada;B
+ calabacita;10;verdura;A
+ batata;62;verdura;A
+ nuez de la india;73;fruto seco;A
+ chirimoya;94;verdura;B
+ dátil;78;fruto seco;C
+ pan blanco;41;elaborada;A
+ piña;80;fruta;A
+ frambuesa;55;fruta;A
+salame;390;elaborada;B
+ chayote;75;fruta;A
+ rábano;6;verdura;A
+ camote;87;verdura;A
+mani;185;fruto seco;A
+ mango manila;90;verdura;B
+ higo seco;48;fruto seco;B
+ pan de centeno con pasas;35;elaborada;B
+pan relleno;75;elaborada;B
+granada;51;fruta;B
+espinaca;13;verdura;B
+calabaza;6;verdura;B
+pasas;113;fruto seco;B
+cacahuate;88;fruto seco;B
+mamey;20;fruta;B
+ciruela;49;fruta;B
+pan integral;38;elaborada;B
+ uva;5;fruta;B
+ guayaba;9;fruta;C
+ pepino;2;verdura;B
+chocolate con leche;864;elaborada;B
+ alcachofa;44;verdura;B
+ mandioca;85;verdura;B
+ chabacano;55;verdura;B
+ empanadas;400;elaborada;B
+ mermelada;267;elaborada;B
+ pan de plátano;820;elaborada;B
+ sandía;12;fruta;B
+ cereza;75;fruta;B
+ cebolla;75;verdura;B
+ chile;26;verdura;A
+nuez;593;fruto seco;B
+nuez pecan;299;fruto seco;B
+ avellana;204;fruto seco;A
+almendra;458;fruto seco;B
+ jalea;69;elaborada;B
+ pan de queso;93;elaborada;B
+ fresa;15;fruta;A
+ maracuyá;84;fruta;B
+ papa;64;verdura;C
+ betabel;66;verdura;B
+ acelga;73;verdura;C
+ remolacha;93;verdura;C
+ tamarindo;41;fruta;C
+ coco;416;fruto seco;A
+ miel;53;animal;A
+ pan de canela;33;elaborada;C
+ limón;76;fruta;C
+ zanahoria;98;verdura;B
+arrollado;463;elaborada;B
+ tuna;96;verdura;C
+ berenjena;19;verdura;C
+ uvas pasas;77;fruto seco;A
+galletas de avena;217;elaborada;C
+ aguacate;104;verdura;C
+ pan de centeno;70;elaborada;A
+ papaya;336;fruta;C
+ ciruela;17;fruta;C
+ lechuga;20;verdura;C
+ maíz;30;fruto seco;C
+ jícama;54;verdura;C
+ champiñón;20;verdura;C
+ carambola;30;verdura;C
+ níspero;130;fruto seco;C
+ pan de trigo integral;500;elaborada;C
+ melón;50;fruta;C
+ zarzamora;34;fruta;C
+ brócoli;25;verdura;C
+ chícharo;90;verdura;C
+ apio;10;verdura;B
+pera;60;fruta;B
+ mango;99;fruta;B
+ toronja;87;fruta;C
+ coliflor;20;verdura;C
+ durazno;98;fruta;C
+ tomate;55;fruta;A
+ espárragos;10;verdura;A
