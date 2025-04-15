@@ -13,3 +13,7 @@ scipy
 scikit-learn
 
 statsmodels
+
+beautifulsoup4
+
+requests

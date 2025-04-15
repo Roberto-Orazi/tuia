@@ -1,0 +1,11 @@
+pandas
+
+numpy
+
+matplotlib
+
+scikit-learn
+
+plotly
+
+seaborn
