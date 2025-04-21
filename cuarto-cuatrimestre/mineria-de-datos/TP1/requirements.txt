@@ -4,8 +4,24 @@ numpy
 
 matplotlib
 
-scikit-learn
+seaborn
 
 plotly
 
-seaborn
+scikit-learn
+
+jupyter
+
+notebook
+
+nbformat
+
+ipykernel
+
+ipywidgets
+
+networkx
+
+kaleido
+
+nbconvert
