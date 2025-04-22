@@ -25,3 +25,5 @@ networkx
 kaleido
 
 nbconvert
+
+scikit-learn-extra
