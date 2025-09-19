@@ -107,9 +107,11 @@ class Button(Widget):
         # Get mouse position
         pos = pygame.mouse.get_pos()
 
+        # Check if mouse is over button
+        is_hovered = self.rect.collidepoint(pos)
+
         # Check mouseover and clicked conditions
-        action = self.rect.collidepoint(pos) \
-            and pygame.mouse.get_pressed()[0]
+        action = is_hovered and pygame.mouse.get_pressed()[0]
 
         # Draw button
         pygame.draw.rect(self.screen, self.background_color, self.rect)
@@ -122,6 +124,11 @@ class Button(Widget):
         self.screen.blit(self.text_surf, (text_x, text_y))
 
         return action
+    
+    def is_hovered(self):
+        """Check if mouse is hovering over the button"""
+        pos = pygame.mouse.get_pos()
+        return self.rect.collidepoint(pos)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}{tuple(vars(self).values())!r}"
@@ -204,7 +211,7 @@ class Menu(Widget):
         self.selected = None
 
         if clicked:
-            self.clicked = True
+            self.clicked = not self.clicked  # Toggle the menu state
 
         if not self.clicked:
             return False
@@ -227,6 +234,16 @@ class Menu(Widget):
                 action = True
 
         return action
+    
+    def is_hovered(self):
+        """Check if mouse is hovering over the menu button or any child"""
+        if self.button.is_hovered():
+            return True
+        if self.clicked:
+            for child in self.children:
+                if child.is_hovered():
+                    return True
+        return False
 
 
 class Orientation(Enum):
@@ -479,3 +496,7 @@ class Popup(Widget):
 
         self.screen.blit(self.surface, self.rect)
         return self.close_btn.draw()
+    
+    def is_hovered(self):
+        """Check if mouse is hovering over the close button"""
+        return self.close_btn.is_hovered()

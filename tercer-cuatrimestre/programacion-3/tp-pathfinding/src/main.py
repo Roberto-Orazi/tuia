@@ -391,6 +391,9 @@ def main() -> None:
 
         if state.need_update:
             draw()
+        
+        # Update cursor based on button hover
+        update_cursor()
 
         # Get pressed keys for weighted nodes
         draw_weighted_nodes, key = get_pressed()
@@ -521,6 +524,32 @@ def get_pressed() -> tuple[bool, int | None]:
             return True, key
 
     return False, None
+
+
+def update_cursor() -> None:
+    """Update cursor based on button hover state"""
+    # List of all interactive buttons/menus
+    interactive_elements = [
+        algo_menu,
+        speed_menu,
+        visualise_btn,
+        comapre_menu,
+        generate_menu,
+        clear_btn
+    ]
+    
+    # Add popup if it exists
+    if state.results_popup:
+        interactive_elements.append(state.results_popup)
+    
+    # Check if any button is hovered
+    is_any_hovered = any(element.is_hovered() for element in interactive_elements)
+    
+    # Set appropriate cursor
+    if is_any_hovered:
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+    else:
+        pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
 
 
 def draw() -> None:
